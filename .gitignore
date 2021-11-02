@@ -25,6 +25,7 @@
 # Ignore uploaded files in development.
 /storage/*
 !/storage/.keep
+/Gemfile.lock
 
 /public/assets
 .byebug_history
