@@ -1,2 +1,3 @@
 class Sabor < ApplicationRecord
+
 end
