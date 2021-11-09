@@ -1,5 +1,6 @@
 class SaborsController < ApplicationController
   before_action :set_sabor, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /sabors or /sabors.json
   def index

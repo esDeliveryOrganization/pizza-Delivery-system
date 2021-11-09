@@ -1,0 +1,8 @@
+<h1>Init</h1>
+
+<%if !user_signed_in?%>
+    <%= link_to "login", "/users/sign_in" %>
+<% else %>
+    <li><%= link_to 'Editar login', edit_user_registration_path, class: "dropdown-item"%></li>
+    <li><%= link_to 'Sair', destroy_user_session_path, method: :delete, class: "dropdown-item"%></li>
+<%end%>
