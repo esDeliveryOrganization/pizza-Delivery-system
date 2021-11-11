@@ -1,8 +1,17 @@
-<h1>Init</h1>
 
-<%if !user_signed_in?%>
-    <%= link_to "login", "/users/sign_in" %>
+
+<%if user_signed_in? && !current_user.adm?%>
+  <h1>Menu</h1>
+  <h2>Bem Vindo Cliente</h2>
+  <li><%= link_to 'Editar login', edit_user_registration_path%></li>
+  <li><%= link_to 'Sair', destroy_user_session_path, method: :delete%></li>
+  <li><%= link_to 'Enderecos', enderecos_path%></li>
+<% elsif user_signed_in? && current_user.adm? %>
+    <h1>Menu</h1>
+    <h2>Bem Vindo Administrador</h2>
+    <li><%= link_to 'Editar login', edit_user_registration_path%></li>
+    <li><%= link_to 'Sair', destroy_user_session_path, method: :delete%></li>
 <% else %>
-    <li><%= link_to 'Editar login', edit_user_registration_path, class: "dropdown-item"%></li>
-    <li><%= link_to 'Sair', destroy_user_session_path, method: :delete, class: "dropdown-item"%></li>
-<%end%>
+  <h1>Bem vindo ao Sistema</h1>
+  <%= link_to "login", new_user_session_path %>
+<% end %>
