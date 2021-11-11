@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_09_225113) do
+ActiveRecord::Schema.define(version: 2021_11_10_220426) do
+
+  create_table "enderecos", force: :cascade do |t|
+    t.string "cep"
+    t.string "cidade"
+    t.text "logradouro"
+    t.text "complemento"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "bairro"
+    t.index ["user_id"], name: "index_enderecos_on_user_id"
+  end
 
   create_table "sabors", force: :cascade do |t|
     t.string "nome"
@@ -30,6 +42,7 @@ ActiveRecord::Schema.define(version: 2021_11_09_225113) do
     t.string "cpf"
     t.string "telefone"
     t.string "nome"
+    t.boolean "adm"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

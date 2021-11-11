@@ -5,19 +5,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  #def new
+  # super
+  #end
+
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  #def create
+  # User.create!({:nome => params[:nome], :cpf => params[:cpf], :telefone => params[:telefone], :password => params[:password], :email => params[:email], :password_confirmation => params[:password_confirmation]})
+  #end
 
   # GET /resource/edit
   # def edit
   #   super
   # end
+
 
   # PUT /resource
   # def update
@@ -45,6 +47,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nome])
     devise_parameter_sanitizer.permit(:sign_up, keys: [:cpf])
     devise_parameter_sanitizer.permit(:sign_up, keys: [:telefone])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email])
+
   end
 
   # If you have extra params to permit, append them to the sanitizer.
@@ -52,6 +56,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(:account_update, keys: [:nome])
     devise_parameter_sanitizer.permit(:account_update, keys: [:cpf])
     devise_parameter_sanitizer.permit(:account_update, keys: [:telefone])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email])
   end
 
   # The path used after sign up.
@@ -63,4 +68,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  def update
+    # code here
+  end
 end

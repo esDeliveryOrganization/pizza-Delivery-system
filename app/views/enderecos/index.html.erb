@@ -1,0 +1,41 @@
+
+
+<p id="notice"><%= notice %></p>
+
+<h1>Enderecos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Cep</th>
+      <th>Cidade</th>
+      <th>Logradouro</th>
+      <th>Complemento</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+
+  <tbody>
+    <% @enderecos.each do |endereco| %>
+      <%if endereco.user_id == current_user.id %>
+        <tr>
+          <td><%= endereco.cep %></td>
+          <td><%= endereco.cidade %></td>
+          <td><%= endereco.logradouro %></td>
+          <td><%= endereco.complemento %></td>
+          <td><% User.find_by(id: endereco.user_id).nome%></td>
+          <td><%= link_to 'Show', endereco %></td>
+          <td><%= link_to 'Edit', edit_endereco_path(endereco) %></td>
+          <td><%= link_to 'Destroy', endereco, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Endereco', new_endereco_path %> |
+<%= link_to "Home", root_path %>
