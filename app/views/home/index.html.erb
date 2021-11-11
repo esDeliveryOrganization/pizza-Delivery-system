@@ -1,16 +1,9 @@
 
 
 <%if user_signed_in? && !current_user.adm?%>
-  <h1>Menu</h1>
-  <h2>Bem Vindo Cliente</h2>
-  <li><%= link_to 'Editar login', edit_user_registration_path%></li>
-  <li><%= link_to 'Sair', destroy_user_session_path, method: :delete%></li>
-  <li><%= link_to 'Enderecos', enderecos_path%></li>
+  <%= render 'menu_cliente/index' %>
 <% elsif user_signed_in? && current_user.adm? %>
-    <h1>Menu</h1>
-    <h2>Bem Vindo Administrador</h2>
-    <li><%= link_to 'Editar login', edit_user_registration_path%></li>
-    <li><%= link_to 'Sair', destroy_user_session_path, method: :delete%></li>
+  <%= render 'menu_adm/index' %>
 <% else %>
   <h1>Bem vindo ao Sistema</h1>
   <%= link_to "login", new_user_session_path %>
