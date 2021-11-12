@@ -71,6 +71,6 @@ class EnderecosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def endereco_params
-      params.require(:endereco).permit(:cep, :cidade, :logradouro, :complemento, :user)
+      params.require(:endereco).permit(:cep, :cidade, :bairro, :logradouro, :complemento, :user)
     end
 end
