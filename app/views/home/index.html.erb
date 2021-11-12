@@ -1,5 +1,3 @@
-
-
 <%if user_signed_in? && !current_user.adm?%>
   <%= render 'menu_cliente/index' %>
 <% elsif user_signed_in? && current_user.adm? %>
@@ -7,4 +5,7 @@
 <% else %>
   <h1>Bem vindo ao Sistema</h1>
   <%= link_to "login", new_user_session_path %>
+
+
+  <%= render  'cardapio/index'%>
 <% end %>
