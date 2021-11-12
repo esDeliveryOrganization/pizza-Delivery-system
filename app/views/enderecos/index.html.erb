@@ -9,6 +9,7 @@
     <tr>
       <th>Cep</th>
       <th>Cidade</th>
+      <th>Bairro</th>
       <th>Logradouro</th>
       <th>Complemento</th>
       <th colspan="3"></th>
@@ -22,6 +23,7 @@
         <tr>
           <td><%= endereco.cep %></td>
           <td><%= endereco.cidade %></td>
+          <td><%= endereco.bairro %></td>
           <td><%= endereco.logradouro %></td>
           <td><%= endereco.complemento %></td>
           <td><% User.find_by(id: endereco.user_id).nome%></td>
