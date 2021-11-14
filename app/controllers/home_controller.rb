@@ -19,7 +19,8 @@ class HomeController < ApplicationController
     end
   end
   def settleAdm
-    if !User.all.any?
+    check_adm = User.find_by(email: 'adm@adm', cpf: "12345678978")
+    if check_adm == nil
       adm = User.new(email: "adm@adm",cpf: "12345678978", password: "123456", nome: "adm", telefone: "0800", adm: true)
       adm.save
     end
