@@ -28,6 +28,12 @@
     <%= f.label :email %>
     <%= f.email_field :email %>
   </div>
+  <%if current_user != nil && current_user.adm%>
+    <div class="field">
+      <%= f.label :adm %>
+      <%= f.text_field :adm%>
+    </div>
+  <%end%>
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
