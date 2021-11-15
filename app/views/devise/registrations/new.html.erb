@@ -34,14 +34,12 @@
     <%= f.label :email %>
     <%= f.email_field :email %>
   </div>
-
-  <%if current_user.adm%>
+  <%if current_user != nil && current_user.adm%>
     <div class="field">
-      <%= f.label "Administrador?"%>
-      <%= f.check_box :adm, {}, true, false%>
+      <%= f.label :adm %>
+      <%= f.text_field :adm%>
     </div>
-  <%end%>
-
+  #<%end%>
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>

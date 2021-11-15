@@ -1,8 +1,16 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+  prepend_before_action :require_no_authentication, :only => []
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
+
+
+  def sign_up(resource_name, resource)
+    if current_user == nil
+      sign_in(resource_name, resource)
+    end
+  end
 
   # GET /resource/sign_up
   def new
@@ -57,7 +65,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(:account_update, keys: [:nome])
     devise_parameter_sanitizer.permit(:account_update, keys: [:cpf])
     devise_parameter_sanitizer.permit(:account_update, keys: [:telefone])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:email])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:adm])
+
   end
 
   # The path used after sign up.
