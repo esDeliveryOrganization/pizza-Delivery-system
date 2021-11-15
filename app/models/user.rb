@@ -9,5 +9,6 @@ class User < ApplicationRecord
   validates :cpf, length: {is: 11}, presence: true, uniqueness: true,numericality: { only_integer: true }
   validates :nome, presence: true
   validates :telefone, presence: true, numericality: { only_integer: true }
+  validates :password_confirmation, presence: true
 
 end
