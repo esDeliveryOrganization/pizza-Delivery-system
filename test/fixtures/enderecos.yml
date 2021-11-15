@@ -5,11 +5,9 @@ one:
   cidade: MyString
   logradouro: MyText
   complemento: MyText
-  user: 
 
 two:
   cep: MyString
   cidade: MyString
   logradouro: MyText
   complemento: MyText
-  user: 
