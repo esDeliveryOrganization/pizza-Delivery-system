@@ -10,3 +10,10 @@ before_script:
   - yarn
 script:
   - bundle exec rake webpacker:install
+  - bundle exec rake db:setup
+  - bundle exec rake db:migrate RAILS_ENV=test
+  - bundle exec rails webpacker:compile
+  - bundle exec cucumber
+  - rails test test/models/enderco_test.rb
+  - rails test test/models/sabor_test.rb
+  - rails test test/models/user_test.rb
