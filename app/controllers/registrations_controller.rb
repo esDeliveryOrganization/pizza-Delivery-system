@@ -7,7 +7,7 @@ class RegistrationsController < Devise::RegistrationsController
     protected 
   
     def sign_up(resource_name, resource)
-      if current_user == nil
+      if current_user.nil?
         sign_in(resource_name, resource)
       end
     end
