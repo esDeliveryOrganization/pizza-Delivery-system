@@ -9,9 +9,16 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    @user = User.where(cpf: params[:cpf]).first
+    if @user.confirmed? and @user.authenticate(params[:password])
+      session[:user_id] = @user.user_id
+      redirect_to root_path      
+    else
+      flash[:error] = "Invalid Cpf or password"
+      render :new
+    end
+  end
 
   # DELETE /resource/sign_out
   # def destroy
