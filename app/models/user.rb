@@ -6,4 +6,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          authentication_keys: [:cpf]
 
+  validates :cpf, length: {is: 11}, presence: true, uniqueness: true,numericality: { only_integer: true }
+  validates :nome, presence: true
+  validates :telefone, presence: true, numericality: { only_integer: true }
+
 end

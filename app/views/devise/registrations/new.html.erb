@@ -1,10 +1,12 @@
 <h2>Sign up</h2>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
+
   <div class="field">
     <%= f.label :cpf %>
     <%= f.text_field :cpf %>
   </div>
+
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
@@ -12,18 +14,22 @@
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
+
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
+
   <div class="field">
     <%= f.label :nome %>
     <%= f.text_field :nome %>
   </div>
+
   <div class="field">
     <%= f.label :telefone %>
     <%= f.text_field :telefone %>
   </div>
+
   <div class="field">
     <%= f.label :email %>
     <%= f.email_field :email %>
