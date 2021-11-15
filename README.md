@@ -31,3 +31,6 @@ Heroku      | none
 
 ## Acesso ao sistema 🖥
 [Link do Heroku](https://deliverypizza-es.herokuapp.com)<br>
+
+Cpf: 12345678978 <br>
+Senha: 123456
