@@ -10,5 +10,5 @@ class User < ApplicationRecord
   validates :nome, presence: true
   validates :telefone, presence: true, numericality: { only_integer: true }
   validates :password_confirmation, presence: true
-
+ 
 end
