@@ -68,7 +68,7 @@ Given('eu estou logado com usuario de CPF ‘{int}’') do |cpf|
     fill_in 'user[password]', :with => '123456'
     fill_in 'user[password_confirmation]', :with => '123456'
     fill_in 'user[nome]', :with => 'Jackson Lima'
-    fill_in 'user[telefone]', :with => '8740028922'
+    fill_in 'user[telefone]', :with => '87940028922'
     fill_in 'user[email]', :with => 'jack@jack.br'
     click_button 'Sign up'
 end
