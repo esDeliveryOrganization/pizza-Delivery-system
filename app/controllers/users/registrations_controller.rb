@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+# frozen_string_literal: des
 
 class Users::RegistrationsController < Devise::RegistrationsController
   prepend_before_action :require_no_authentication, :only => []
@@ -38,6 +38,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def destroy
   #   super
   # end
+
+  def deleteOtherUser
+    @cliente.destroy
+    respond_to do |format|
+      format.html { redirect_to clientes_path, notice: "Usuario Destruido" }
+      format.json { head :no_content }
+    end
+  end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign

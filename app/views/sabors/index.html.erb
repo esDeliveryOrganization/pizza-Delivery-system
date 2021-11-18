@@ -1,7 +1,5 @@
 <p id="notice"><%= notice %></p>
-
 <h1>Sabors</h1>
-
 <table>
   <thead>
     <tr>
@@ -10,7 +8,6 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
     <% @sabors.each do |sabor| %>
       <tr>
@@ -23,8 +20,6 @@
     <% end %>
   </tbody>
 </table>
-
 <br>
-
 <%= link_to 'New Sabor', new_sabor_path %> |
 <%= link_to 'Home', root_path %>

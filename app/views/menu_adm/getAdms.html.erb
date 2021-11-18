@@ -1,0 +1,26 @@
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Cpf</th>
+      <th>Telefone</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @adms.each do |adm| %>
+      <tr>
+        <td><%= adm.nome %></td>
+        <td><%= adm.email %></td>
+        <td><%= adm.cpf %></td>
+        <td><%= adm.telefone %></td>
+        <td><%= link_to 'Show', adms_path%></td>
+        <td><%= link_to 'Edit', adms_path %></td>
+        <td><%= link_to 'Destroy', adms_path%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<li><%= link_to "Novo Administrador", new_user_registration_path %></li>
+<li><%= link_to "Back", root_path %></li>
