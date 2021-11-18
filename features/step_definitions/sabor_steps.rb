@@ -1,5 +1,4 @@
 Given('estou logado como administrador') do
-  visit '/'
   visit '/users/sign_in'
   expect(page).to have_current_path('/users/sign_in')
   fill_in 'user_cpf', :with => '12345678978'
