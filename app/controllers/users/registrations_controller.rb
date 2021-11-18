@@ -35,9 +35,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # DELETE /resource
-  def destroy
-    super
-  end
+  # def destroy
+  #   super
+  # end
 
   def deleteOtherUser
     @cliente.destroy
