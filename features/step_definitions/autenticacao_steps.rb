@@ -43,14 +43,15 @@ Given('o administrador com CPF {string} e senha {string} existe') do |cpf, senha
     click_button 'Log in'
     expect(page).to have_content('Menu')
     expect(page).to have_content('Bem Vindo Administrador')
-    click_link 'Novo Usuário'
+    click_link 'Administradores'
+    click_link 'Novo Administrador'
     fill_in 'user[cpf]', :with => cpf
     fill_in 'user[password]', :with => senha
     fill_in 'user[password_confirmation]', :with => senha
     fill_in 'user[nome]', :with => 'Jackson Lima'
     fill_in 'user[telefone]', :with => '87958972859'
     fill_in 'user[email]', :with => 'jack@jack.br'
-    fill_in 'user[adm]', :with => '1'
+    fill_in 'user[adm]', :with => 'true'
     click_button 'Sign up'
     visit '/'
     click_link 'Sair'

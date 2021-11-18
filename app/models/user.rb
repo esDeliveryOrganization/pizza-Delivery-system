@@ -11,5 +11,5 @@ class User < ApplicationRecord
   validates :telefone, presence: true, numericality: { only_integer: true }, length: {minimum: 11, too_short: "must have at least numbers 11"}
   validates :password_confirmation, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
-  
+
 end

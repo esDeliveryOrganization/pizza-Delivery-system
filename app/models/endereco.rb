@@ -1,5 +1,5 @@
 class Endereco < ApplicationRecord
-  has_one :user
+  belongs_to :user
 
   validates :cep, presence: true, numericality: { only_integer: true }, length: {is: 8}
   validates :cidade, presence: true, length: {minimum: 4, too_short: "Must have at least 4 characters!"}

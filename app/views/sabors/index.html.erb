@@ -18,7 +18,7 @@
         <td><%= sabor.preco %></td>
         <td><%= link_to 'Show', sabor %></td>
         <td><%= link_to 'Edit', edit_sabor_path(sabor), id:"e-#{sabor.nome}" %></td>
-        <td><%= link_to 'Destroy', sabor, method: :delete, data: { confirm: 'Are you sure?' }, id:"a-#{sabor.nome}" %></td>
+        <td><%= link_to 'Destroy', registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, id:"a-#{cliente.cpf}" %></td>
       </tr>
     <% end %>
   </tbody>
