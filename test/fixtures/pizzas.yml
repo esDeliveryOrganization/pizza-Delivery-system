@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tamanho: 1.5
+  fatias: 1
+  preco: 1.5
+  desc: MyText
+
+two:
+  tamanho: 1.5
+  fatias: 1
+  preco: 1.5
+  desc: MyText

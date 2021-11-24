@@ -4,8 +4,9 @@ class EnderecoTest < ActiveSupport::TestCase
   usuario = User.new cpf: '12312312390', password: '123456', password_confirmation: '123456', nome: 'Usuario de teste', telefone: '87991929394', email: 'usuariodeteste@gmail.com'
 
   test 'endereco deve ser salvo' do
+    usuario = User.new cpf: '12312312390', password: '123456', password_confirmation: '123456', nome: 'Usuario de teste', telefone: '87991929394', email: 'usuariodeteste@gmail.com'
     assert usuario.save
-    endereco = Endereco.new cep: '55244210', cidade: 'Cidade de teste', bairro: 'Bairro B', logradouro: 'Centro', complemento: 'Casa 20', user_id: usuario.id
+    endereco = Endereco.new cep: '55317505', cidade: 'Cidade de teste', bairro: 'Bairro B', logradouro: 'Centro', complemento: 'Casa 20', user_id: usuario.id
     assert endereco.save
   end
 

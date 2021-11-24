@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tamanho:</strong>
+  <%= @pizza.tamanho %>
+</p>
+
+<p>
+  <strong>Fatias:</strong>
+  <%= @pizza.fatias %>
+</p>
+
+<p>
+  <strong>Preco:</strong>
+  <%= @pizza.preco %>
+</p>
+
+<p>
+  <strong>Desc:</strong>
+  <%= @pizza.desc %>
+</p>
+
+<p>
+  <strong>Sabor 1:</strong>
+    <%= Sabor.find_by(id: @pizza.sabor1_id).nome %>
+</p>
+
+<p>
+  <strong>Sabor 2:</strong>
+  <%= Sabor.find_by(id: @pizza.sabor2_id).nome %>
+</p>
+
+<%= link_to 'Edit', edit_pizza_path(@pizza) %> |
+<%= link_to 'Back', pizzas_path %>

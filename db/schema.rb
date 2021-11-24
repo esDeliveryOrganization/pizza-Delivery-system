@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_10_220426) do
+ActiveRecord::Schema.define(version: 2021_11_23_003910) do
 
   create_table "enderecos", force: :cascade do |t|
     t.string "cep"
@@ -22,6 +22,19 @@ ActiveRecord::Schema.define(version: 2021_11_10_220426) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "bairro"
     t.index ["user_id"], name: "index_enderecos_on_user_id"
+  end
+
+  create_table "pizzas", force: :cascade do |t|
+    t.float "tamanho"
+    t.integer "fatias"
+    t.float "preco"
+    t.text "desc"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "sabor1_id"
+    t.integer "sabor2_id"
+    t.index ["sabor1_id"], name: "index_pizzas_on_sabor1_id"
+    t.index ["sabor2_id"], name: "index_pizzas_on_sabor2_id"
   end
 
   create_table "sabors", force: :cascade do |t|

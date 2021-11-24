@@ -1,0 +1,48 @@
+<%= form_with(model: pizza) do |form| %>
+  <% if pizza.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(pizza.errors.count, "error") %> prohibited this pizza from being saved:</h2>
+
+      <ul>
+        <% pizza.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :tamanho %>
+    <%= form.text_field :tamanho %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fatias %>
+    <%= form.number_field :fatias %>
+  </div>
+
+  <div class="field">
+    <%= form.label :preco %>
+    <%= form.text_field :preco %>
+  </div>
+
+  <div class="field">
+    <%= form.label :desc %>
+    <%= form.text_area :desc %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sabor1 %>
+    <%= form.collection_select(:sabor1_id, Sabor.all, :id, :nome, include_blank: "Escolha um sabor") %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sabor2 %>
+    <%= form.collection_select(:sabor2_id, Sabor.all, :id, :nome, include_blank: "Escolha um sabor") %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
