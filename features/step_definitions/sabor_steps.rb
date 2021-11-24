@@ -38,7 +38,7 @@ end
 
 When('clico em remover o sabor com nome {string}') do |sabor|
   expect(page).to have_content(sabor)
-  click_link "a-#{sabor}"
+  click_button "a-#{sabor}"
 end
 
 Then('vejo uma mensagem que o sabor foi apagado com sucesso') do
