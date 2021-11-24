@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @entregador.nome %>
+</p>
+
+<p>
+  <strong>Telefone:</strong>
+  <%= @entregador.telefone %>
+</p>
+
+<p>
+  <strong>Cpf:</strong>
+  <%= @entregador.cpf %>
+</p>
+
+<%= link_to 'Edit', edit_entregador_path(@entregador) %> |
+<%= link_to 'Back', entregadors_path %>
