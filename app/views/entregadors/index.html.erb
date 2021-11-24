@@ -1,0 +1,29 @@
+<h1>Entregadors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Telefone</th>
+      <th>Cpf</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @entregadors.each do |entregador| %>
+      <tr>
+        <td><%= entregador.nome %></td>
+        <td><%= entregador.telefone %></td>
+        <td><%= entregador.cpf %></td>
+        <td><%= link_to 'Show', entregador %></td>
+        <td><%= link_to 'Edit', edit_entregador_path(entregador) %></td>
+        <td><%= button_to 'Destroy', entregador, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Entregador', new_entregador_path %>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :entregadors
   resources :pizzas
   get 'cardapio/_index'
   get 'menu_cliente/index'

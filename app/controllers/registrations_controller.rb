@@ -19,7 +19,6 @@ class RegistrationsController < Devise::RegistrationsController
       devise_parameter_sanitizer.permit(:sign_up, keys: [:telefone])
       devise_parameter_sanitizer.permit(:sign_up, keys: [:email])
       devise_parameter_sanitizer.permit(:sign_up, keys: [:adm])
-
     end
 
     # If you have extra params to permit, append them to the sanitizer.
