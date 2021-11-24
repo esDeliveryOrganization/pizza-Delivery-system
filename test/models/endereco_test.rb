@@ -5,7 +5,7 @@ class EnderecoTest < ActiveSupport::TestCase
 
   test 'endereco deve ser salvo' do
     assert usuario.save
-    endereco = Endereco.new cep: '55244210', cidade: 'Cidade de teste', bairro: 'Bairro B', logradouro: 'Centro', complemento: 'Casa 20', user_id: usuario.id
+    endereco = Endereco.new cep: '22222222', cidade: 'Cidade de teste', bairro: 'Bairro B', logradouro: 'Centro', complemento: 'Casa 20', user_id: usuario.id
     assert endereco.save
   end
 
