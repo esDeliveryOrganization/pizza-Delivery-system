@@ -1,0 +1,62 @@
+<%= form_with(model: pedido) do |form| %>
+  <% if pedido.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(pedido.errors.count, "error") %> prohibited this pedido from being saved:</h2>
+
+      <ul>
+        <% pedido.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :pizza_id %>
+    <%= form.text_field :pizza_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :endereco_id %>
+    <%= form.text_field :endereco_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :entregador_id %>
+    <%= form.text_field :entregador_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :precoTotal %>
+    <%= form.text_field :precoTotal %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :qtdPizzas %>
+    <%= form.number_field :qtdPizzas %>
+  </div>
+
+  <div class="field">
+    <%= form.label :obs %>
+    <%= form.text_area :obs %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nomeDest %>
+    <%= form.text_field :nomeDest %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contato %>
+    <%= form.text_field :contato %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

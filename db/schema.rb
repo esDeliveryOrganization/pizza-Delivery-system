@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_24_002400) do
+ActiveRecord::Schema.define(version: 2021_11_25_015721) do
 
   create_table "enderecos", force: :cascade do |t|
     t.string "cep"
@@ -30,6 +30,23 @@ ActiveRecord::Schema.define(version: 2021_11_24_002400) do
     t.string "cpf"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "pedidos", force: :cascade do |t|
+    t.integer "pizza_id", null: false
+    t.integer "endereco_id", null: false
+    t.integer "entregador_id", null: false
+    t.float "precoTotal"
+    t.string "status"
+    t.integer "qtdPizzas"
+    t.text "obs"
+    t.string "nomeDest"
+    t.string "contato"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["endereco_id"], name: "index_pedidos_on_endereco_id"
+    t.index ["entregador_id"], name: "index_pedidos_on_entregador_id"
+    t.index ["pizza_id"], name: "index_pedidos_on_pizza_id"
   end
 
   create_table "pizzas", force: :cascade do |t|
@@ -68,4 +85,7 @@ ActiveRecord::Schema.define(version: 2021_11_24_002400) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "pedidos", "enderecos"
+  add_foreign_key "pedidos", "entregadors"
+  add_foreign_key "pedidos", "pizzas"
 end

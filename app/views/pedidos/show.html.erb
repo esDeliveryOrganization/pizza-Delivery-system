@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Pizza:</strong>
+  <%= @pedido.pizza_id %>
+</p>
+
+<p>
+  <strong>Endereco:</strong>
+  <%= @pedido.endereco_id %>
+</p>
+
+<p>
+  <strong>Entregador:</strong>
+  <%= @pedido.entregador_id %>
+</p>
+
+<p>
+  <strong>Precototal:</strong>
+  <%= @pedido.precoTotal %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @pedido.status %>
+</p>
+
+<p>
+  <strong>Qtdpizzas:</strong>
+  <%= @pedido.qtdPizzas %>
+</p>
+
+<p>
+  <strong>Obs:</strong>
+  <%= @pedido.obs %>
+</p>
+
+<p>
+  <strong>Nomedest:</strong>
+  <%= @pedido.nomeDest %>
+</p>
+
+<p>
+  <strong>Contato:</strong>
+  <%= @pedido.contato %>
+</p>
+
+<%= link_to 'Edit', edit_pedido_path(@pedido) %> |
+<%= link_to 'Back', pedidos_path %>

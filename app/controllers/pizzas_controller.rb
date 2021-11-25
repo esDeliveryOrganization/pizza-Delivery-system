@@ -46,7 +46,7 @@ class PizzasController < ApplicationController
 
     respond_to do |format|
       if @pizza.save
-        format.html { redirect_to pedidos, notice: "Pizza was successfully created." }
+        format.html { redirect_to new_pedido_path, notice: "Pizza was successfully created." }
         format.json { render :show, status: :created, location: @pizza }
       else
         format.html { render :new, status: :unprocessable_entity }

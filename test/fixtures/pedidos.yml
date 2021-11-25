@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pizza: one
+  endereco: one
+  entregador: one
+  precoTotal: 1.5
+  status: MyString
+  qtdPizzas: 1
+  obs: MyText
+  nomeDest: MyString
+  contato: MyString
+
+two:
+  pizza: two
+  endereco: two
+  entregador: two
+  precoTotal: 1.5
+  status: MyString
+  qtdPizzas: 1
+  obs: MyText
+  nomeDest: MyString
+  contato: MyString
