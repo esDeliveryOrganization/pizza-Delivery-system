@@ -21,13 +21,17 @@
 </p>
 
 <p>
-  <strong>Sabor 1:</strong>
-    <%= Sabor.find_by(id: @pizza.sabor1_id).nome %>
+  <% if @pizza.sabor1_id != nil %>
+  <strong>Sabor:</strong>
+    <%= Sabor.find_by(id: @pizza.sabor1_id).preco%>
+  <% end %>  
 </p>
 
 <p>
-  <strong>Sabor 2:</strong>
-  <%= Sabor.find_by(id: @pizza.sabor2_id).nome %>
+  <% if @pizza.sabor2_id != nil %>
+  <strong>Sabor:</strong>
+    <%= Sabor.find_by(id: @pizza.sabor2_id).nome %>
+  <% end %>  
 </p>
 
 <%= link_to 'Edit', edit_pizza_path(@pizza) %> |
