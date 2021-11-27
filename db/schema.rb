@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_25_015721) do
+ActiveRecord::Schema.define(version: 2021_11_27_214428) do
 
   create_table "enderecos", force: :cascade do |t|
     t.string "cep"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2021_11_25_015721) do
     t.string "contato"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "cpfDest"
     t.index ["endereco_id"], name: "index_pedidos_on_endereco_id"
     t.index ["entregador_id"], name: "index_pedidos_on_entregador_id"
   end
