@@ -5,7 +5,6 @@
 <table>
   <thead>
     <tr>
-      <th>Pizza</th>
       <th>Endereco</th>
       <th>Entregador</th>
       <th>Precototal</th>
@@ -21,8 +20,7 @@
   <tbody>
     <% @pedidos.each do |pedido| %>
       <tr>
-        <td><%= pedido.pizza_id %></td>
-        <td><%= pedido.endereco_id %></td>
+        <td><%= pedido.endereco.logradouro %></td>
         <td><%= pedido.entregador_id %></td>
         <td><%= pedido.precoTotal %></td>
         <td><%= pedido.status %></td>
