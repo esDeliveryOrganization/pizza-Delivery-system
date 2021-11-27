@@ -42,8 +42,6 @@
     <br/>
   <% end %>
 
- 
-
   <h1> Informações do Pedido </h1>
   <% if pedido.errors.any? %>
     <div id="error_explanation">
@@ -61,10 +59,14 @@
     <%= form.collection_select(:endereco_id, current_user.enderecos, :id, :logradouro, include_blank: "Enderecos") %>
   </div>
 
-  <div class="field">
-    <%= form.label :entregador_id %>
-    <%= form.collection_select(:entregador_id, Entregador.all, :id, :nome, include_blank: "Entregador") %>
-  </div>
+  <% if current_user.adm? %>
+    <div class="field">
+      <%= form.label :entregador_id %>
+      <%= form.collection_select(:entregador_id, Entregador.all, :id, :nome, include_blank: "Entregador") %>
+    </div>
+    
+  <% end %>
+
 
   <div class="field">
     <%= form.label :precoTotal %>
@@ -91,6 +93,23 @@
     <%= form.label :contato %>
     <%= form.text_field :contato, value: current_user.telefone, :class => "form-controller"%>
   </div>
+
+  <% if current_user.adm? %>
+    <div class='field'>
+      <% status = {"Esperando Visualização" => "Esperando Visualização", "Visto" => "Visto", "Em preparo" => "Em preparo", "Saiu para entrega" => "Saiu para entrega", "Entregue" => "Entregue", "Cancelado" => "Cancelado"} %>
+      <fieldset>
+        <h5>Status</h5>
+        <% lista = status %>
+        <% lista.each do |status| %>
+          <%= form.radio_button :status, status[1] %>
+          <label for="<%= status[1] %>" ><%= status[0] %> </label><br/>
+        <% end %>
+      </fieldset>
+    </div>
+  <% end %>
+
+  
+    
 
   <div class="actions">
     <%= form.submit %>

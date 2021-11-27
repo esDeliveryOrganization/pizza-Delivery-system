@@ -1,9 +1,17 @@
 class PedidosController < ApplicationController
   before_action :set_pedido, only: %i[ show edit update destroy ]
+  
 
   # GET /pedidos or /pedidos.json
   def index
-    @pedidos = Pedido.where(cpfDest: current_user.cpf)
+    if current_user.adm?
+      @pedidos = Pedido.all
+    else
+      @pedidos = Pedido.where(cpfDest: current_user.cpf)
+    end
+  end
+
+  def checarStatus
 
   end
 
@@ -15,11 +23,12 @@ class PedidosController < ApplicationController
   def new
     @pedido = Pedido.new
     @pedido.build_pizza
-    
   end
 
   # GET /pedidos/1/edit
   def edit
+    uri = URI.parse(url)
+    @params = CGI.parse(uri.query)
   end
 
   def checarPizza(pedido)
@@ -53,6 +62,7 @@ class PedidosController < ApplicationController
     @pedido = Pedido.new(pedido_params)
     @pedido.cpfDest = current_user.cpf
     checarPizza(@pedido)
+    @pedido.status = "Esperando Visualização"
 
   
     respond_to do |format|
