@@ -13,6 +13,8 @@ class PedidosController < ApplicationController
   # GET /pedidos/new
   def new
     @pedido = Pedido.new
+    @pedido.build_pizza
+    
   end
 
   # GET /pedidos/1/edit
@@ -23,6 +25,7 @@ class PedidosController < ApplicationController
   def create
     @pedido = Pedido.new(pedido_params)
 
+  
     respond_to do |format|
       if @pedido.save
         format.html { redirect_to @pedido, notice: "Pedido was successfully created." }
@@ -64,6 +67,6 @@ class PedidosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pedido_params
-      params.require(:pedido).permit(:pizza_id, :endereco_id, :entregador_id, :precoTotal, :status, :qtdPizzas, :obs, :nomeDest, :contato)
+      params.require(:pedido).permit(:endereco_id, :entregador_id, :precoTotal, :status, :qtdPizzas, :obs, :nomeDest, :contato, :pizza_attributes => [:tamanho, :fatias, :preco, :desc, :sabor1_id, :sabor2_id])
     end
 end
