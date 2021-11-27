@@ -29,11 +29,11 @@ When('clico em login') do
   click_button 'Log in'
 end
 
-Then('eu vejo uma mensagem de boas vindas para cliente') do
-    expect(page).to have_content("Bem Vindo Cliente")
+Then('vejo uma mensagem de login realizado com sucesso') do
+    expect(page).to have_content('Signed in successfully.')
 end
 
-# Scnenario 2
+# Scenario 2
 Given('o administrador com CPF {string} e senha {string} existe') do |cpf, senha|
     visit '/'
     visit '/users/sign_in'
@@ -57,12 +57,8 @@ Given('o administrador com CPF {string} e senha {string} existe') do |cpf, senha
     click_link 'Sair'
 end
 
-Then('eu vejo mensagem de boas vindas para administrador') do
-    expect(page).to have_content('Bem Vindo Administrador')
-end
-
 #Scenario 3
-Given('eu estou logado com usuario de CPF ‘{int}’') do |cpf|
+Given('eu estou logado com usuario de CPF {string}') do |cpf|
     visit '/users/sign_in'
     click_link 'Sign up'
     fill_in 'user[cpf]', :with => cpf
@@ -78,37 +74,10 @@ When('eu clico no botao de sair') do
     click_link 'Sair'
 end
 
-Then('eu vejo a pagina inicial') do
-    expect(page).to have_current_path('/')
+Then('vejo uma mensagem de logout realizado') do
+    expect(page).to have_content('Signed out successfully.')
 end
 
-#Scenario negativo 1
-Given('eu estou na pagina de login') do
-    visit '/users/sign_in'
-end
-
-Given('o cliente com CPF ‘{int}’ e senha ‘{int}’ existe') do |cpf, senha|
-    visit '/users/sign_in'
-    fill_in 'user[cpf]', :with => cpf
-    fill_in 'user[password]', :with => senha
-    click_button 'Log in'
-end
-
-When('eu preencho os campos CPF ‘{int}’ e senha ‘{int}’') do |cpf, senha|
-    fill_in 'user[cpf]', :with => cpf
-    fill_in 'user[password]', :with => senha
-    click_button 'Log in'
-end
-
-Then('eu vejo mensagem de senha com senha incorreta') do
+Then('vejo mensagem de login invalido') do
     expect(page).to have_content('Invalid Cpf or password')
 end
-
-#Scenario negativo 2
-Given('o administrador com CPF ‘{int}’ e senha ‘{int}’ existe') do |cpf, senha|
-    fill_in 'user[cpf]', :with => cpf
-    fill_in 'user[password]', :with => senha
-    click_button 'Log in'
-end
-
-
