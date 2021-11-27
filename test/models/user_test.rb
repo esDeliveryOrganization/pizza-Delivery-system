@@ -3,7 +3,7 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
   # Cadastro valido
   test 'usuario deve ser salvo' do
-    usuario = User.new cpf: '70496006444', password: '123456', password_confirmation: '123456', nome: 'Usuario de teste', telefone: '87991929394', email: 'usuariodeteste@gmail.com'
+    usuario = User.new cpf: '70496006446', password: '123456', password_confirmation: '123456', nome: 'Usuario de teste', telefone: '87991929394', email: 'usuariodeteste@gmail.com'
     assert usuario.save
   end
 
