@@ -18,12 +18,11 @@ When('clico em sign up') do
   click_button 'Sign up'
 end
 
-Then('vejo a pagina do menu') do
-  expect(page).to have_content('Menu')
-  expect(page).to have_content('Bem Vindo')
+Then('vejo uma mensagem de boas vindas') do
+  expect(page).to have_content('Welcome! You have signed up successfully.')
 end
 
-Given('estou logado com o CPF {string}') do |cpf|
+Given('o usuario com CPF {string} existe') do |cpf|
   visit '/users/sign_in'
   click_link 'Sign up'
   fill_in 'user[cpf]', :with => cpf
@@ -33,6 +32,17 @@ Given('estou logado com o CPF {string}') do |cpf|
   fill_in 'user[telefone]', :with => '87999221364'
   fill_in 'user[email]', :with => 'raimundopeixoto@gmail.com'
   click_button 'Sign up'
+  expect(page).to have_content('Welcome! You have signed up successfully.')
+  click_link 'Sair'
+  expect(page).to have_content('Signed out successfully.')
+end
+
+Given('estou logado com usuario de CPF {string}') do |cpf|
+  visit '/users/sign_in'
+  fill_in 'user[cpf]', :with => cpf
+  fill_in 'user[password]', :with => '010203'
+  click_button 'Log in'
+  expect(page).to have_content('Signed in successfully.')
 end
 
 Given('estou no menu') do
@@ -46,6 +56,10 @@ end
 
 When('clico em atualizar') do
   click_button 'Update'
+end
+
+Then('vejo uma mensagem de conta atualizada com sucesso') do
+  expect(page).to have_content('Your account has been updated successfully.')
 end
 
 When('preencho os campos de senha com {string}, confirmacao de senha com {string} e senha atual com {string}') do |novaSenha, confirmacaoSenha, senhaAtual|
@@ -73,6 +87,6 @@ When('preencho os campos de senha atual com {string}, confirmacao de senha com {
   fill_in 'user[telefone]', :with => telefone
 end
 
-Then('vejo a a mensagem de telefone invalido') do
+Then('vejo uma mensagem de telefone invalido') do
   expect(page).to have_content("Telefone is not a number")
 end

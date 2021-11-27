@@ -8,11 +8,12 @@ Feature: Usuario
     Given estou na pagina de cadastro de cliente
     When preencho os campos de CPF com '12345678910', senha '123456', confirmacao de senha '123456', nome 'Jorge Vilela', telefone '87999921366', email 'jorgev@gmail.com'
     And clico em sign up
-    Then vejo a pagina do menu
+    Then vejo uma mensagem de boas vindas
 
   # Positivo
   Scenario: remover cadastro
-    Given estou logado com o CPF '10120230310'
+    Given o usuario com CPF '10120230310' existe
+    And estou logado com usuario de CPF '10120230310'
     And estou no menu
     When clico em editar login
     And clico em cancelar minha conta
@@ -20,12 +21,13 @@ Feature: Usuario
 
   # Positivo
   Scenario: editar senha valida
-    Given estou logado com o CPF '10120230310'
+    Given o usuario com CPF '10120230310' existe
+    And estou logado com usuario de CPF '10120230310'
     And estou no menu
     When clico em editar login
     And preencho os campos de senha com '000111', confirmacao de senha com '000111' e senha atual com '010203'
     And clico em atualizar
-    Then vejo a pagina do menu
+    Then vejo uma mensagem de conta atualizada com sucesso
 
   # Negativo
   Scenario: cadastro de cliente com CPF de tamanho invalido
@@ -36,9 +38,10 @@ Feature: Usuario
 
   # Negativo
   Scenario: editar com telefone invalido
-    Given estou logado com o CPF '10120230310'
+    Given o usuario com CPF '10120230310' existe
+    And estou logado com usuario de CPF '10120230310'
     And estou no menu
     When clico em editar login
     And preencho os campos de senha atual com '010203', confirmacao de senha com '010203' e telefone com 'BR87999221364'
     And clico em atualizar
-    Then vejo a a mensagem de telefone invalido
+    Then vejo uma mensagem de telefone invalido
