@@ -1,6 +1,3 @@
-#Scenario Positivo
-#Scenario 1
-
 Given('o cliente com CPF {string} e senha {string} existe') do |cpf, senha|
     visit '/users/sign_in'
     click_link 'Sign up'
@@ -33,7 +30,6 @@ Then('vejo uma mensagem de login realizado com sucesso') do
     expect(page).to have_content('Signed in successfully.')
 end
 
-# Scenario 2
 Given('o administrador com CPF {string} e senha {string} existe') do |cpf, senha|
     visit '/'
     visit '/users/sign_in'
@@ -55,19 +51,6 @@ Given('o administrador com CPF {string} e senha {string} existe') do |cpf, senha
     click_button 'Sign up'
     visit '/'
     click_link 'Sair'
-end
-
-#Scenario 3
-Given('eu estou logado com usuario de CPF {string}') do |cpf|
-    visit '/users/sign_in'
-    click_link 'Sign up'
-    fill_in 'user[cpf]', :with => cpf
-    fill_in 'user[password]', :with => '123456'
-    fill_in 'user[password_confirmation]', :with => '123456'
-    fill_in 'user[nome]', :with => 'Jackson Lima'
-    fill_in 'user[telefone]', :with => '87940028922'
-    fill_in 'user[email]', :with => 'jack@jack.br'
-    click_button 'Sign up'
 end
 
 When('eu clico no botao de sair') do

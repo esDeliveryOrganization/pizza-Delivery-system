@@ -21,7 +21,8 @@ Scenario: login valido como administrador
 
 #Positivo 3
 Scenario: logout
-    Given eu estou logado com usuario de CPF '12345678910'
+    Given o usuario com CPF '10120230310' existe
+    And estou logado com usuario de CPF '10120230310'
     When eu clico no botao de sair
     Then vejo uma mensagem de logout realizado
 
