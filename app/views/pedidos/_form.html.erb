@@ -11,19 +11,57 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :pizza_id %>
-    <%= form.text_field :pizza_id %>
-  </div>
+  <%=  form.fields_for :pizza do |ff| %>
+    <div class='field'>
+      <% tamanhos = {"Tamanho G" => 1.8, "Tamanho M" => 1.5, "Tamanho P" => 1} %>
+      <fieldset>
+        <% lista = tamanhos.sort %>
+        <% lista.each do |tamanho| %>
+          <%= ff.radio_button :tamanho, tamanho[1] %>
+          <label for="<%= tamanho[1] %>" ><%= tamanho[0] %> </label>
+        <% end %>
+      </fieldset>
+    </div>
 
+    <div class="field">
+      <%= ff.label :sabor1 %>
+      <%= ff.collection_select(:sabor1_id, Sabor.all, :id, :nome, include_blank: "Escolha um sabor") %>
+    </div>
+
+    <div class="field">
+      <%= ff.label :sabor2 %>
+      <%= ff.collection_select(:sabor2_id, Sabor.all, :id, :nome, include_blank: "Escolha um sabor") %>
+    </div>
+    <br/>
+
+    <div class="field">
+      <%= ff.label :fatias %>
+      <%= ff.number_field :fatias, disabled: true %>
+    </div>
+    <br/>
+
+    <div class="field">
+      <%= ff.label :preco %>
+      <%= ff.text_field :preco, disabled: true %>
+    </div>
+    <br/>
+
+    <div class="field">
+      <%= ff.label :desc %>
+      <%= ff.text_area :desc %>
+    </div>
+    <br/>
+  <% end %>
+
+  <h1> Informações do Pedido </h1>
   <div class="field">
     <%= form.label :endereco_id %>
-    <%= form.text_field :endereco_id %>
+    <%= form.collection_select(:endereco_id, current_user.enderecos, :id, :logradouro, include_blank: "Enderecos") %>
   </div>
 
   <div class="field">
     <%= form.label :entregador_id %>
-    <%= form.text_field :entregador_id %>
+    <%= form.collection_select(:entregador_id, Entregador.all, :id, :nome, include_blank: "Entregador") %>
   </div>
 
   <div class="field">
@@ -31,10 +69,6 @@
     <%= form.text_field :precoTotal %>
   </div>
 
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status %>
-  </div>
 
   <div class="field">
     <%= form.label :qtdPizzas %>
@@ -48,6 +82,7 @@
 
   <div class="field">
     <%= form.label :nomeDest %>
+    <% @pedido.nomeDest = current_user.nome %>
     <%= form.text_field :nomeDest %>
   </div>
 

@@ -22,7 +22,7 @@ class PizzasController < ApplicationController
   # POST /pizzas or /pizzas.json
   def create
     @pizza = Pizza.new(pizza_params)
-    @pizza.tamanho = 1
+    @pizza.tamanho ||= 1
     # Associação dos sabores e tamanhos escolhidos
     if @pizza.sabor1_id != nil && @pizza.sabor2_id != nil
       @pizza.preco = (Sabor.find_by(id: @pizza.sabor1_id).preco/2) + (Sabor.find_by(id: @pizza.sabor2_id).preco/2)
@@ -40,9 +40,10 @@ class PizzasController < ApplicationController
       @pizza.fatias = 6
     elsif @pizza.tamanho == 1.5
       @pizza.fatias = 8
-    elsif @pizza.tamanho == 1.18
+    elsif @pizza.tamanho == 1.8
       @pizza.fatias = 12
     end
+
 
     respond_to do |format|
       if @pizza.save
@@ -68,7 +69,7 @@ class PizzasController < ApplicationController
     end
   end
 
-  # DELETE /pizzas/1 or /pizzas/1.json
+  # DELETE /pizzas/1 or /pizzas/1.json  
   def destroy
     @pizza.destroy
     respond_to do |format|
@@ -85,6 +86,6 @@ class PizzasController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pizza_params
-      params.require(:pizza).permit(:tamanho, :fatias, :preco, :desc, :sabor1_id, :sabor2_id)
+      params.require(:pizza).permit(:tamanho, :fatias, :preco, :desc, :sabor1_id, :sabor2_id, :pedido_id)
     end
 end
