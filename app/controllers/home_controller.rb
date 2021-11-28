@@ -1,11 +1,12 @@
 class HomeController < ApplicationController
   before_action :settleSabors
   before_action :settleAdm
+  before_action :settleEntregador
   def index
   end
 
   def settleSabors
-    if !Sabor.all.any?
+    unless Sabor.all.any?
       sabor1 = Sabor.new(nome: 'Calabresa', preco: 20.5)
       sabor1.save
       sabor2 = Sabor.new(nome: 'Quatro Queijos', preco: 20.5)
@@ -18,6 +19,7 @@ class HomeController < ApplicationController
       sabor4.save
     end
   end
+
   def settleAdm
     check_adm = User.find_by(email: 'adm@adm', cpf: "12345678978")
     if check_adm == nil
@@ -25,4 +27,12 @@ class HomeController < ApplicationController
       adm.save
     end
   end
+
+  def settleEntregador
+    unless Entregador.all.any?
+      deliverBoy = Entregador.new(nome: "João", cpf: "98765415921", telefone: "87911999999")
+      deliverBoy.save
+    end
+  end
+
 end

@@ -5,10 +5,13 @@
   <%= @pedido.endereco_id %>
 </p>
 
-<p>
-  <strong>Entregador:</strong>
-  <%= @pedido.entregador_id %>
-</p>
+
+<%if current_user.adm%>
+  <p>
+    <strong>Entregador:</strong>
+    <%= @entregador %>
+  </p>
+<%end%>
 
 <p>
   <strong>Precototal:</strong>
@@ -40,5 +43,8 @@
   <%= @pedido.contato %>
 </p>
 
-<%= link_to 'Edit', edit_pedido_path(@pedido) %> |
+<%if !current_user.adm && (@pedido.status == "Esperando Visualização" || @pedido.status == "Visto")%>
+  <%= link_to 'Edit', edit_pedido_path(@pedido) %> |
+  <%= link_to 'Destroy', @pedido, method: :delete, data: { confirm: 'Are you sure?' } %> | 
+<%end%>
 <%= link_to 'Back', pedidos_path %>
