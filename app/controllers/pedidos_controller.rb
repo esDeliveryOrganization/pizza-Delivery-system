@@ -71,9 +71,30 @@ class PedidosController < ApplicationController
   def create
     @pedido = Pedido.new(pedido_params)
     @pedido.cpfDest = current_user.cpf
-    checarPizzaPreco(@pedido)
-    checarPizzaTamanho(@pedido)
-    checarPizza(@pedido)
+    unless @pedido.pizza.nil?
+      # Associação dos sabores e tamanhos escolhidos
+      if !@pedido.pizza.sabor1_id.nil? && !@pedido.pizza.sabor2_id.nil?
+        @pedido.pizza.preco = (Sabor.find_by(id: @pedido.pizza.sabor1_id).preco/2) + (Sabor.find_by(id: @pedido.pizza.sabor2_id).preco/2)
+        @pedido.pizza.preco *= @pedido.pizza.tamanho
+      elsif !@pedido.pizza.sabor1_id.nil? && @pedido.pizza.sabor2_id.nil?
+        @pedido.pizza.preco = Sabor.find_by(id: @pedido.pizza.sabor1_id).preco * @pedido.pizza.tamanho 
+
+      elsif @pedido.pizza.sabor1_id.nil? && !@pedido.pizza.sabor2_id.nil?
+        @pedido.pizza.preco = Sabor.find_by(id: @pedido.pizza.sabor2_id).preco * @pedido.pizza.tamanho
+      end
+
+      if @pedido.pizza.tamanho == 1
+        @pedido.pizza.fatias = 6
+      elsif @pedido.pizza.tamanho == 1.5
+        @pedido.pizza.fatias = 8
+      elsif @pedido.pizza.tamanho == 1.8
+        @pedido.pizza.fatias = 12
+      end
+
+      @pedido.precoTotal = @pedido.qtdPizzas * @pedido.pizza.preco
+
+    end
+
     @pedido.status = "Esperando Visualização"
     @pedido.entregador_id = Entregador.first.id
 
