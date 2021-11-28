@@ -64,7 +64,6 @@
       <%= form.label :entregador_id %>
       <%= form.collection_select(:entregador_id, Entregador.all, :id, :nome, include_blank: "Entregador") %>
     </div>
-    
   <% end %>
 
 
@@ -76,7 +75,7 @@
 
   <div class="field">
     <%= form.label :qtdPizzas %>
-    <%= form.number_field :qtdPizzas, min: 1, max: 10, value: 1 %>
+    <%= form.number_field :qtdPizzas, min: 1, max: 10, value: 1, :class => "form-controller" %>
   </div>
 
   <div class="field">
@@ -107,9 +106,6 @@
       </fieldset>
     </div>
   <% end %>
-
-  
-    
 
   <div class="actions">
     <%= form.submit %>

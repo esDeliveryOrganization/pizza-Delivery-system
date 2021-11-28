@@ -17,6 +17,7 @@ class PedidosController < ApplicationController
 
   # GET /pedidos/1 or /pedidos/1.json
   def show
+    @entregador = Entregador.find_by(id: @pedido.entregador_id).nome
   end
 
   # GET /pedidos/new
@@ -63,8 +64,9 @@ class PedidosController < ApplicationController
     @pedido.cpfDest = current_user.cpf
     checarPizza(@pedido)
     @pedido.status = "Esperando Visualização"
+    @pedido.precoTotal = @pedido.qtdPizzas * @pedido.pizza.preco
+    @pedido.entregador_id = Entregador.first.id
 
-  
     respond_to do |format|
       if @pedido.save
         format.html { redirect_to @pedido, notice: "Pedido was successfully created." }

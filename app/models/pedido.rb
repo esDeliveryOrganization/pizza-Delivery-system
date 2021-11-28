@@ -3,7 +3,7 @@ class Pedido < ApplicationRecord
   accepts_nested_attributes_for :pizza, allow_destroy: true, reject_if: :all_blank
 
   belongs_to :endereco
-  belongs_to :entregador
+  has_one :entregador
 
   validates_associated :pizza
   validates_presence_of :pizza, :message => "Preencha os campos de pizza"
