@@ -1,9 +1,10 @@
-Given('estou logado como administrador') do
+Given('estou logado como administrador com CPF {string} e senha {string}') do |cpf, senha|
   visit '/'
+  # Ao visitar a home, cria-se um administrador padrao
   visit '/users/sign_in'
   expect(page).to have_current_path('/users/sign_in')
-  fill_in 'user_cpf', :with => '12345678978'
-  fill_in 'user_password', :with => '123456'
+  fill_in 'user_cpf', :with => cpf
+  fill_in 'user_password', :with => senha
   click_button 'Log in'
   expect(page).to have_content('Menu')
   expect(page).to have_content('Bem Vindo Administrador')

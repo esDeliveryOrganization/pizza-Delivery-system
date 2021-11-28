@@ -5,7 +5,8 @@ Feature: Sabor
 
   # Positivo
   Scenario: cadastrar sabor
-    Given estou logado como administrador
+    Given o administrador com CPF '10120230340' e senha '102030' existe
+    And estou logado como administrador com CPF '10120230340' e senha '102030'
     And estou na pagina de sabores
     And clico em cadastrar sabor
     And crio um sabor com nome 'Chocolate' e preco ’24.0’
@@ -13,7 +14,8 @@ Feature: Sabor
 
   # Positivo
   Scenario: remover sabor
-    Given estou logado como administrador
+    Given o administrador com CPF '10120230340' e senha '102030' existe
+    And estou logado como administrador com CPF '10120230340' e senha '102030'
     And o sabor com nome 'Chocolate' existe
     And estou na pagina de sabores
     When clico em remover o sabor com nome 'Chocolate'
@@ -21,7 +23,8 @@ Feature: Sabor
 
   # Positivo
   Scenario: editar sabor existente
-    Given estou logado como administrador
+    Given o administrador com CPF '10120230340' e senha '102030' existe
+    And estou logado como administrador com CPF '10120230340' e senha '102030'
     And o sabor com nome 'Chocolate' existe
     And estou na pagina de sabores
     When clico em editar sabor com nome 'Chocolate'
@@ -31,7 +34,8 @@ Feature: Sabor
 
   # Negativo
   Scenario: cadastrar sabor inserindo nome invalido
-    Given estou logado como administrador
+    Given o administrador com CPF '10120230340' e senha '102030' existe
+    And estou logado como administrador com CPF '10120230340' e senha '102030'
     And estou na pagina de sabores
     When clico em cadastrar sabor
     And crio um sabor com nome 'C' e preco ’25’
@@ -39,7 +43,8 @@ Feature: Sabor
 
   # Negativo
   Scenario: editar sabor inserindo preco invalido
-    Given estou logado como administrador
+    Given o administrador com CPF '10120230340' e senha '102030' existe
+    And estou logado como administrador com CPF '10120230340' e senha '102030'
     And o sabor com nome 'Chocolate' existe
     And estou na pagina de sabores
     When clico em editar sabor com nome 'Chocolate'
