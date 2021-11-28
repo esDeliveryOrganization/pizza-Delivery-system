@@ -60,15 +60,21 @@ class PedidosController < ApplicationController
     end
   end
 
+  def checarPizza(pedido)
+    unless @pedido.pizza.nil?
+      @pedido.precoTotal = @pedido.qtdPizzas * @pedido.pizza.preco
+    end
+  end
+
 
   # POST /pedidos or /pedidos.json
   def create
     @pedido = Pedido.new(pedido_params)
     @pedido.cpfDest = current_user.cpf
     checarPizzaPreco(@pedido)
-    checarPizzaTamanho(@oedido)
+    checarPizzaTamanho(@pedido)
+    checarPizza(@pedido)
     @pedido.status = "Esperando Visualização"
-    @pedido.precoTotal = @pedido.qtdPizzas * @pedido.pizza.preco
     @pedido.entregador_id = Entregador.first.id
 
     respond_to do |format|
