@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   before_action :settleSabors
   before_action :settleAdm
+  before_action :settleEntregador
   def index
   end
 
@@ -25,4 +26,11 @@ class HomeController < ApplicationController
       adm.save
     end
   end
+  def settleEntregador
+    if !Entregador.all.any?
+      deliverBoy = Entregador.new(nome: "João", cpf: "98765415921", telefone: "87911999999")
+      deliverBoy.save
+    end
+  end
+
 end

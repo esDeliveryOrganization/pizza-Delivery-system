@@ -1,6 +1,6 @@
 class PedidosController < ApplicationController
   before_action :set_pedido, only: %i[ show edit update destroy ]
-  
+  before_action :checkStatus, only: %i[ update edit destroy ]
 
   # GET /pedidos or /pedidos.json
   def index
@@ -35,6 +35,9 @@ class PedidosController < ApplicationController
   def create
     @pedido = Pedido.new(pedido_params)
     @pedido.cpfDest = current_user.cpf
+    @pedido.nomeDest ||= current_user.nome
+    @pedido.contato ||= current_user.telefone
+
     unless @pedido.pizza.nil?
       # Associação dos sabores e tamanhos escolhidos
       if !@pedido.pizza.sabor1_id.nil? && !@pedido.pizza.sabor2_id.nil?
@@ -76,6 +79,14 @@ class PedidosController < ApplicationController
     
   end
 
+  def checkStatus
+    unless current_user.adm
+      if @pedido.status != "Visto" && @pedido.status !=  "Esperando Visualização"
+        redirect_to @pedido, alert: "O pedido não pode mais ser editado."
+      end
+    end
+  end
+
   # PATCH/PUT /pedidos/1 or /pedidos/1.json
   def update
     respond_to do |format|
@@ -91,11 +102,7 @@ class PedidosController < ApplicationController
 
   # DELETE /pedidos/1 or /pedidos/1.json
   def destroy
-    @pedido.destroy
-    respond_to do |format|
-      format.html { redirect_to pedidos_url, notice: "Pedido was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    @pedido.update(status: "Cancelado")
   end
 
   private

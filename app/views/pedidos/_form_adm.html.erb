@@ -1,6 +1,7 @@
 <%= form_with(model: pedido) do |form| %>
 
   <%=  form.fields_for :pizza do |ff| %>
+      
     <div class='field'>
       <% tamanhos = {"Tamanho G" => 1.8, "Tamanho M" => 1.5, "Tamanho P" => 1} %>
       <fieldset>
@@ -11,6 +12,7 @@
         <% end %>
       </fieldset>
     </div>
+
 
     <div class="field">
       <%= ff.label :sabor1 %>
@@ -37,7 +39,7 @@
 
     <div class="field">
       <%= ff.label :desc %>
-      <%= ff.text_area :desc %>
+      <%= ff.text_area :desc, disabled: true %>
     </div>
     <br/>
   <% end %>
@@ -54,10 +56,7 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= form.label :endereco_id %>
-    <%= form.collection_select(:endereco_id, current_user.enderecos, :id, :logradouro, include_blank: "Enderecos") %>
-  </div>
+
 
   <% if current_user.adm? %>
     <div class="field">
@@ -75,7 +74,7 @@
 
   <div class="field">
     <%= form.label :qtdPizzas %>
-    <%= form.number_field :qtdPizzas, min: 1, max: 10, value: 1, :class => "form-controller" %>
+    <%= form.number_field :qtdPizzas, min: 1, max: 10, value: 1, :class => "form-controller", disabled: true %>
   </div>
 
   <div class="field">
@@ -85,12 +84,12 @@
 
   <div class="field">
     <%= form.label :nomeDest %>
-    <%= form.text_field :nomeDest,  value: current_user.nome, :class => "form-controller"%>
+    <%= form.text_field :nomeDest, disabled: true%>
   </div>
 
   <div class="field">
     <%= form.label :contato %>
-    <%= form.text_field :contato, value: current_user.telefone, :class => "form-controller"%>
+    <%= form.text_field :contato, disabled: true%>
   </div>
 
   <% if current_user.adm? %>
@@ -108,7 +107,7 @@
   <% end %>
 
   <div class="actions">
-    <%= form.submit  %>
+    <%= form.submit %>
   </div>
 
    

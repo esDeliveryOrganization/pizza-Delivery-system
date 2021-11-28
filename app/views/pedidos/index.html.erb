@@ -31,10 +31,10 @@
         <td><%= pedido.contato %></td>
         <td><%= link_to 'Show', pedido %></td>
         
-        <%# <% if pedido.status ==  "Esperando Vizualização" %>
-        <%# <% end %> 
-        <td><%= link_to 'Edit', edit_pedido_path(pedido) %></td>
-        <td><%= link_to 'Destroy', pedido, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%if current_user.adm%>
+          <td><%= link_to 'Edit', edit_pedido_path(pedido) %></td>
+          <td><%= link_to 'Destroy', pedido, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
       </tr>
     <% end %>
   </tbody>
