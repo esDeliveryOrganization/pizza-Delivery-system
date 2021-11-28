@@ -1,6 +1,10 @@
 <h1>Editing Pedido</h1>
 
-<%= render 'form', pedido: @pedido %>
+<%if !current_user.adm %>
+    <%= render 'form', pedido: @pedido %>
+<%else%>
+    <%= render 'form_adm', pedido: @pedido %>
+<%end%>
 
 <%= link_to 'Show', @pedido %> |
 <%= link_to 'Back', pedidos_path %>
