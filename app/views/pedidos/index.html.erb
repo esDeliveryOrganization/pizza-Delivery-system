@@ -3,9 +3,9 @@
 <h1>Pedidos</h1>
 
 <table>
+
   <thead>
     <tr>
-      <th>Pizza</th>
       <th>Endereco</th>
       <th>Entregador</th>
       <th>Precototal</th>
@@ -21,8 +21,7 @@
   <tbody>
     <% @pedidos.each do |pedido| %>
       <tr>
-        <td><%= pedido.pizza_id %></td>
-        <td><%= pedido.endereco_id %></td>
+        <td><%= pedido.endereco.logradouro %></td>
         <td><%= pedido.entregador_id %></td>
         <td><%= pedido.precoTotal %></td>
         <td><%= pedido.status %></td>
@@ -31,6 +30,9 @@
         <td><%= pedido.nomeDest %></td>
         <td><%= pedido.contato %></td>
         <td><%= link_to 'Show', pedido %></td>
+        
+        <%# <% if pedido.status ==  "Esperando Vizualização" %>
+        <%# <% end %> 
         <td><%= link_to 'Edit', edit_pedido_path(pedido) %></td>
         <td><%= link_to 'Destroy', pedido, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -40,4 +42,5 @@
 
 <br>
 
-<%= link_to 'New Pedido', new_pedido_path %>
+<%= link_to 'Fazer um Pedido', new_pedido_path %> |
+<%= link_to 'Home', root_path %>

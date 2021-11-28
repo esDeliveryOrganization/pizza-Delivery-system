@@ -1,15 +1,4 @@
 <%= form_with(model: pedido) do |form| %>
-  <% if pedido.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(pedido.errors.count, "error") %> prohibited this pedido from being saved:</h2>
-
-      <ul>
-        <% pedido.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <%=  form.fields_for :pizza do |ff| %>
     <div class='field'>
@@ -54,25 +43,39 @@
   <% end %>
 
   <h1> Informações do Pedido </h1>
+  <% if pedido.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(pedido.errors.count, "error") %> prohibited this pedido from being saved:</h2>
+
+      <ul>
+        <% pedido.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <div class="field">
     <%= form.label :endereco_id %>
     <%= form.collection_select(:endereco_id, current_user.enderecos, :id, :logradouro, include_blank: "Enderecos") %>
   </div>
 
-  <div class="field">
-    <%= form.label :entregador_id %>
-    <%= form.collection_select(:entregador_id, Entregador.all, :id, :nome, include_blank: "Entregador") %>
-  </div>
+  <% if current_user.adm? %>
+    <div class="field">
+      <%= form.label :entregador_id %>
+      <%= form.collection_select(:entregador_id, Entregador.all, :id, :nome, include_blank: "Entregador") %>
+    </div>
+  <% end %>
+
 
   <div class="field">
     <%= form.label :precoTotal %>
-    <%= form.text_field :precoTotal %>
+    <%= form.text_field :precoTotal, desable: true %>
   </div>
 
 
   <div class="field">
     <%= form.label :qtdPizzas %>
-    <%= form.number_field :qtdPizzas %>
+    <%= form.number_field :qtdPizzas, min: 1, max: 10, value: 1, :class => "form-controller" %>
   </div>
 
   <div class="field">
@@ -82,16 +85,31 @@
 
   <div class="field">
     <%= form.label :nomeDest %>
-    <% @pedido.nomeDest = current_user.nome %>
-    <%= form.text_field :nomeDest %>
+    <%= form.text_field :nomeDest,  value: current_user.nome, :class => "form-controller"%>
   </div>
 
   <div class="field">
     <%= form.label :contato %>
-    <%= form.text_field :contato %>
+    <%= form.text_field :contato, value: current_user.telefone, :class => "form-controller"%>
   </div>
+
+  <% if current_user.adm? %>
+    <div class='field'>
+      <% status = {"Esperando Visualização" => "Esperando Visualização", "Visto" => "Visto", "Em preparo" => "Em preparo", "Saiu para entrega" => "Saiu para entrega", "Entregue" => "Entregue", "Cancelado" => "Cancelado"} %>
+      <fieldset>
+        <h5>Status</h5>
+        <% lista = status %>
+        <% lista.each do |status| %>
+          <%= form.radio_button :status, status[1] %>
+          <label for="<%= status[1] %>" ><%= status[0] %> </label><br/>
+        <% end %>
+      </fieldset>
+    </div>
+  <% end %>
 
   <div class="actions">
     <%= form.submit %>
   </div>
+
+   
 <% end %>

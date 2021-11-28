@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_25_015721) do
+ActiveRecord::Schema.define(version: 2021_11_27_214428) do
 
   create_table "enderecos", force: :cascade do |t|
     t.string "cep"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2021_11_25_015721) do
   end
 
   create_table "pedidos", force: :cascade do |t|
+    t.integer "pizza_id", null: false
     t.integer "endereco_id", null: false
     t.integer "entregador_id", null: false
     t.float "precoTotal"
@@ -43,12 +44,13 @@ ActiveRecord::Schema.define(version: 2021_11_25_015721) do
     t.string "contato"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "cpfDest"
     t.index ["endereco_id"], name: "index_pedidos_on_endereco_id"
     t.index ["entregador_id"], name: "index_pedidos_on_entregador_id"
+    t.index ["pizza_id"], name: "index_pedidos_on_pizza_id"
   end
 
   create_table "pizzas", force: :cascade do |t|
-    t.integer "pedido_id"
     t.float "tamanho"
     t.integer "fatias"
     t.float "preco"
@@ -57,7 +59,6 @@ ActiveRecord::Schema.define(version: 2021_11_25_015721) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "sabor1_id"
     t.integer "sabor2_id"
-    t.index ["pedido_id"], name: "index_pizzas_on_pedido_id"
     t.index ["sabor1_id"], name: "index_pizzas_on_sabor1_id"
     t.index ["sabor2_id"], name: "index_pizzas_on_sabor2_id"
   end
@@ -87,4 +88,5 @@ ActiveRecord::Schema.define(version: 2021_11_25_015721) do
 
   add_foreign_key "pedidos", "enderecos"
   add_foreign_key "pedidos", "entregadors"
+  add_foreign_key "pedidos", "pizzas"
 end
