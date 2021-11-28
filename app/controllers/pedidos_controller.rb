@@ -32,21 +32,24 @@ class PedidosController < ApplicationController
     @params = CGI.parse(uri.query)
   end
 
-  def checarPizza(pedido)
+  def checarPizzaPreco(pedido)
     unless @pedido.pizza.nil?
       # Associação dos sabores e tamanhos escolhidos
-      if @pedido.pizza.sabor1_id != nil && @pedido.pizza.sabor2_id != nil
+      if !@pedido.pizza.sabor1_id.nil? && !@pedido.pizza.sabor2_id.nil?
         @pedido.pizza.preco = (Sabor.find_by(id: @pedido.pizza.sabor1_id).preco/2) + (Sabor.find_by(id: @pedido.pizza.sabor2_id).preco/2)
         @pedido.pizza.preco *= @pedido.pizza.tamanho
-
-      elsif @pedido.pizza.sabor1_id != nil && @pedido.pizza.sabor2_id == nil
+      elsif !@pedido.pizza.sabor1_id.nil? && @pedido.pizza.sabor2_id.nil?
         @pedido.pizza.preco = Sabor.find_by(id: @pedido.pizza.sabor1_id).preco * @pedido.pizza.tamanho 
 
-      elsif @pedido.pizza.sabor1_id == nil && @pedido.pizza.sabor2_id != nil
+      elsif @pedido.pizza.sabor1_id.nil? && !@pedido.pizza.sabor2_id.nil?
         @pedido.pizza.preco = Sabor.find_by(id: @pedido.pizza.sabor2_id).preco * @pedido.pizza.tamanho
       end
+    end
+  end
 
-      # Associação de tamanho da pedido.pizza e quantidade de fatias
+  def checarPizzaTamanho(pedido)
+    # Associação de tamanho da pedido.pizza e quantidade de fatias
+    unless @pedido.pizza.nil?  
       if @pedido.pizza.tamanho == 1
         @pedido.pizza.fatias = 6
       elsif @pedido.pizza.tamanho == 1.5
@@ -62,7 +65,8 @@ class PedidosController < ApplicationController
   def create
     @pedido = Pedido.new(pedido_params)
     @pedido.cpfDest = current_user.cpf
-    checarPizza(@pedido)
+    checarPizzaPreco(@pedido)
+    checarPizzaTamanho(@oedido)
     @pedido.status = "Esperando Visualização"
     @pedido.precoTotal = @pedido.qtdPizzas * @pedido.pizza.preco
     @pedido.entregador_id = Entregador.first.id
