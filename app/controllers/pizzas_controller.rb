@@ -1,5 +1,5 @@
 class PizzasController < ApplicationController
-  before_action :set_pizza, only: %i[ show edit update destroy ]
+  # before_action :set_pizza, only: %i[ show edit update destroy ]
 
   # GET /pizzas or /pizzas.json
   def index
@@ -22,29 +22,7 @@ class PizzasController < ApplicationController
   # POST /pizzas or /pizzas.json
   def create
     @pizza = Pizza.new(pizza_params)
-    @pizza.tamanho ||= 1
-    # Associação dos sabores e tamanhos escolhidos
-    if @pizza.sabor1_id != nil && @pizza.sabor2_id != nil
-      @pizza.preco = (Sabor.find_by(id: @pizza.sabor1_id).preco/2) + (Sabor.find_by(id: @pizza.sabor2_id).preco/2)
-      @pizza.preco *= @pizza.tamanho
-
-    elsif @pizza.sabor1_id != nil && @pizza.sabor2_id == nil
-      @pizza.preco = Sabor.find_by(id: @pizza.sabor1_id).preco * @pizza.tamanho 
-
-    elsif @pizza.sabor1_id == nil && @pizza.sabor2_id != nil
-      @pizza.preco = Sabor.find_by(id: @pizza.sabor2_id).preco * @pizza.tamanho
-    end
-
-    # Associação de tamanho da pizza e quantidade de fatias
-    if @pizza.tamanho == 1
-      @pizza.fatias = 6
-    elsif @pizza.tamanho == 1.5
-      @pizza.fatias = 8
-    elsif @pizza.tamanho == 1.8
-      @pizza.fatias = 12
-    end
-
-
+  
     respond_to do |format|
       if @pizza.save
         format.html { redirect_to new_pedido_path, notice: "Pizza was successfully created." }

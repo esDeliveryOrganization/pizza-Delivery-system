@@ -15,8 +15,8 @@ class ApplicationController < ActionController::Base
       sabor3.save
       sabor4 = Sabor.new(nome: 'Bacon', preco: 22.50)
       sabor4.save
-      sabor4 = Sabor.new(nome: 'Frango com Cheddar', preco: 21.30)
-      sabor4.save
+      sabor5 = Sabor.new(nome: 'Frango com Cheddar', preco: 21.30)
+      sabor5.save
     end
   end
 
