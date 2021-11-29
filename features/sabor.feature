@@ -8,7 +8,7 @@ Feature: Sabor
     Given o administrador com CPF '10120230340' e senha '102030' existe
     And estou logado como administrador com CPF '10120230340' e senha '102030'
     And estou na pagina de sabores
-    And clico em cadastrar sabor
+    When clico em cadastrar sabor
     And crio um sabor com nome 'Chocolate' e preco ’24.0’
     Then vejo uma mensagem que o sabor foi cadastrado com sucesso
 

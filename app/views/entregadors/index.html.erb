@@ -17,8 +17,8 @@
         <td><%= entregador.telefone %></td>
         <td><%= entregador.cpf %></td>
         <td><%= link_to 'Show', entregador %></td>
-        <td><%= link_to 'Edit', edit_entregador_path(entregador) %></td>
-        <td><%= button_to 'Destroy', entregador, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_entregador_path(entregador), id:"e-#{entregador.cpf}" %></td>
+        <td><%= button_to 'Destroy', entregador, method: :delete, data: { confirm: 'Are you sure?' }, id:"a-#{entregador.cpf}" %></td>
       </tr>
     <% end %>
   </tbody>
