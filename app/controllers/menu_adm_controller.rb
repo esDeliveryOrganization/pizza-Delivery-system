@@ -1,4 +1,8 @@
 class MenuAdmController < ApplicationController
+
+    def index
+        @loja = Loja.first
+    end
     
     def getClientes
         @clientes = User.where(adm: nil)
