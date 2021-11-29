@@ -29,11 +29,11 @@
         <td><%= pedido.obs %></td>
         <td><%= pedido.nomeDest %></td>
         <td><%= pedido.contato %></td>
-        <td><%= link_to 'Show', pedido %></td>
+        <td><%= link_to 'Show', pedido, id:"S-#{pedido.id}" %></td>
         
         <%if current_user.adm%>
-          <td><%= link_to 'Edit', edit_pedido_path(pedido) %></td>
-          <td><%= link_to 'Destroy', pedido, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Edit', edit_pedido_path(pedido), id:"e-#{pedido.id}" %></td>
+          <td><%= link_to 'Destroy', pedido,  method: :delete, data: { confirm: 'Are you sure?' }, id:"D-#{pedido.id}" %></td>
         <%end%>
       </tr>
     <% end %>
