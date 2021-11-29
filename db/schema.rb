@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_27_214428) do
+ActiveRecord::Schema.define(version: 2021_11_28_222817) do
 
   create_table "enderecos", force: :cascade do |t|
     t.string "cep"
@@ -28,6 +28,13 @@ ActiveRecord::Schema.define(version: 2021_11_27_214428) do
     t.string "nome"
     t.string "telefone"
     t.string "cpf"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "lojas", force: :cascade do |t|
+    t.time "abertura"
+    t.time "fechamento"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

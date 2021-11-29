@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Abertura:</strong>
+  <%= @loja.abertura.strftime("%H:%M") %>
+</p>
+
+<p>
+  <strong>Fechamento:</strong>
+  <%= @loja.fechamento.strftime("%H:%M") %>
+</p>
+
+<%= link_to 'Edit', edit_loja_path(@loja) %> |
+<%= link_to 'Back',  root_path %>
