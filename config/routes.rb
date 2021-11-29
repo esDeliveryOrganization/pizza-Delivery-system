@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :lojas
   resources :pedidos
   resources :entregadors
   resources :pizzas
