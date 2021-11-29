@@ -4,7 +4,7 @@ When('eu clico em editar um pedido com ID ‘{int}’') do |id|
     click_link "Edit"
 end
 
-When('altero o status da pizza para {string}') do |status|
+When('altero o status da pizza para {string}') do |_status|
     choose('pedido_status_entregue')
 end
 
