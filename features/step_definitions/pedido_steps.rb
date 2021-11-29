@@ -26,7 +26,7 @@ Given('estou na pagina de cadastro de pedido') do
     visit '/pedidos/new' 
 end
 
-When('eu crio uma pizza com tamanho {string} e sabor {string}') do |tamanho, sabor|
+When('eu crio uma pizza com tamanho M e sabor {string}') do |sabor|
     expect(page).to have_content('Monte sua Pizza')
     choose('pedido_pizza_attributes_tamanho_1_5')
     select sabor, from:'pedido[pizza_attributes][sabor1_id]'
@@ -52,7 +52,7 @@ Given('estou na pagina de pedido') do
 end
   
 Given('existe o pedido de ID ‘{int}’') do |id|
-    expect(page).to have_content('Pedidos')
+    expect(page).to have_content(id)
 end
   
 Given('pedido esta com status {string}') do |status|
@@ -80,8 +80,7 @@ end
 
 #Scenario Positivo 3
 When('eu clico em visualizar pedido com ID ‘{int}’') do |id|
-    expect(page).to have_content(id)
-    click_link 'Show'
+    click_link "S-#{id}"
 end
 
 Then('eu vejo um pedido com status {string}') do |status|
@@ -93,15 +92,11 @@ When('eu crio uma pizza sem tamanho e sabor') do
     click_button 'Create Pedido'
 end
   
-Then('eu vejo uma mensagem que para preencher os campos de pizza') do
+Then('eu vejo uma mensagem para preencher os campos de pizza') do
     expect(page).to have_content('Pizza Preencha os campos de pizza')
 end
 
 #Scenario Negativo 2
-When('nao escolho o endereco') do
-    click_button 'Create Pedido'
-end
-  
 Then('eu vejo uma mensagem que o endereco nao existe') do
     expect(page).to have_content('Endereco must exist')
 end

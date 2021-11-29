@@ -10,7 +10,7 @@ Scenario: cadastrar pedido
   And o entregador com cpf '15985278994' existe
   And o endereco com cep '56460000' existe
   And estou na pagina de cadastro de pedido
-  When eu crio uma pizza com tamanho 'M' e sabor 'Calabresa'
+  When eu crio uma pizza com tamanho M e sabor 'Calabresa'
   And escolho o endereco 'Rua nossa senhora da saude' 
   And clico em criar pedido
   Then eu vejo uma mensagem que o pedido foi cadastrado com sucesso
@@ -21,7 +21,7 @@ Scenario: editar pedido
   And o entregador com cpf '15985278994' existe
   And o endereco com cep '56460000' existe
   And estou na pagina de cadastro de pedido
-  When eu crio uma pizza com tamanho 'M' e sabor 'Calabresa'
+  When eu crio uma pizza com tamanho M e sabor 'Calabresa'
   And escolho o endereco 'Rua nossa senhora da saude'
   And clico em criar pedido 
   And estou na pagina de pedido
@@ -38,7 +38,7 @@ Scenario: visualizar pedido
   And o entregador com cpf '15985278994' existe
   And o endereco com cep '56460000' existe
   And estou na pagina de cadastro de pedido
-  When eu crio uma pizza com tamanho 'M' e sabor 'Calabresa'
+  When eu crio uma pizza com tamanho M e sabor 'Calabresa'
   And escolho o endereco 'Rua nossa senhora da saude'
   And clico em criar pedido 
   And estou na pagina de pedido
@@ -56,7 +56,7 @@ Scenario: cadastrar pedido sem tamanho
   And estou na pagina de cadastro de pedido
   When eu crio uma pizza sem tamanho e sabor
   And clico em criar pedido
-  Then eu vejo uma mensagem que para preencher os campos de pizza
+  Then eu vejo uma mensagem para preencher os campos de pizza
 
 #Negativo 2
 Scenario: cadastrar pedido sem endereco
@@ -64,7 +64,6 @@ Scenario: cadastrar pedido sem endereco
   And o entregador com cpf '15985278994' existe
   And o endereco com cep '56460000' existe
   And estou na pagina de cadastro de pedido
-  When eu crio uma pizza com tamanho 'M' e sabor 'Calabresa'
-  And nao escolho o endereco  
+  When eu crio uma pizza com tamanho M e sabor 'Calabresa'
   And clico em criar pedido
   Then eu vejo uma mensagem que o endereco nao existe
