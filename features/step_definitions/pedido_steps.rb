@@ -51,7 +51,7 @@ Given('estou na pagina de pedido') do
     visit '/pedidos' 
 end
   
-Given('existe o pedido de ID ‘{int}’') do |int|
+Given('existe o pedido de ID ‘{int}’') do |id|
     expect(page).to have_content('Pedidos')
 end
   
