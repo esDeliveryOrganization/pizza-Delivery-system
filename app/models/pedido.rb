@@ -8,4 +8,5 @@ class Pedido < ApplicationRecord
   validates_associated :pizza
   validates_presence_of :pizza, :message => "Preencha os campos de pizza"
 
+  validates :entregador, presence: true
 end
