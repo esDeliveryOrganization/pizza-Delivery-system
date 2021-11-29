@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
 
   def settleAdm
     check_adm = User.find_by(email: 'adm@adm', cpf: "12345678978")
-    if check_adm == nil
+    if check_adm.nil?
       adm = User.new(email: "adm@adm",cpf: "12345678978", password: "123456", password_confirmation: "123456", nome: "adm", telefone: "87996202910", adm: true)
       adm.save
     end

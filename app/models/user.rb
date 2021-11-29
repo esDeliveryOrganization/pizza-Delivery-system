@@ -10,7 +10,7 @@ class User < ApplicationRecord
   validates :nome, presence: true, length: {minimum: 3, too_short: "must have at least 3 characters "}, length: { maximum: 30, too_long: "must have at maximum 30 characters" }
   validates :telefone, presence: true, numericality: { only_integer: true }, length: {minimum: 11, too_short: "must have at least numbers 11"}
   validates :password_confirmation, presence: true
-  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
 
     
 
