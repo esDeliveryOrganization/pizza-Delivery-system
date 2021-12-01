@@ -11,33 +11,30 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :cep %>
-    <%= form.text_field :cep %>
+  <div class="field form-group">
+    <%= form.text_field :cep, class: "form-control", placeholder: "CEP" %>
+  </div>
+  <br/>
+  <div class="field form-group">
+    <%= form.text_field :cidade, class: "form-control", placeholder: "Cidade" %>
+  </div>
+  <br/>
+  <div class="field form-group">
+    <%= form.text_field :bairro, class: "form-control", placeholder: "Bairro" %>
+  </div>
+  <br/>
+  <div class="field form-group">
+    <%= form.text_area :logradouro, class: "form-control", placeholder: "Logradouro" %>
+  </div>
+  <br/>
+  <div class="field form-group">
+    <%= form.text_area :complemento, class: "form-control", placeholder: "Complemento" %>
   </div>
 
-  <div class="field">
-    <%= form.label :cidade %>
-    <%= form.text_field :cidade %>
-  </div>
-
-  <div class="field">
-    <%= form.label :bairro %>
-    <%= form.text_field :bairro %>
-  </div>
-
-  <div class="field">
-    <%= form.label :logradouro %>
-    <%= form.text_area :logradouro %>
-  </div>
-
-  <div class="field">
-    <%= form.label :complemento %>
-    <%= form.text_area :complemento %>
-  </div>
-
+  <br/>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-outline-dark" %>
   </div>
+  <br/>
 <% end %>
