@@ -3,67 +3,58 @@ Feature: Pedido
   I want to cadastrar, visualizar, alterar e cancelar pedido
   So that nao faca isso manualmente
 
-#Cenários positivos
-#Positivo 1
-Scenario: cadastrar pedido
-  Given eu estou logado como cliente de cpf '12345678910'
-  And o entregador com cpf '15985278994' existe
-  And o endereco com cep '56460000' existe
-  And estou na pagina de cadastro de pedido
-  When eu crio uma pizza com tamanho M e sabor 'Calabresa'
-  And escolho o endereco 'Rua nossa senhora da saude' 
-  And clico em criar pedido
-  Then eu vejo uma mensagem que o pedido foi cadastrado com sucesso
+  # Positivo
+  Scenario: cadastrar pedido
+    Given o cliente com CPF '12345678910' e senha '123456' existe
+    And estou logado como cliente de cpf '12345678910' e senha '123456'
+    And o endereco com logradouro 'Rua B' existe
+    And estou na pagina de cadastro de pedido
+    When eu crio uma pizza com sabor 'Calabresa'
+    And escolho o tamanho 'M'
+    And escolho o endereco com logradouro 'Rua B'
+    And clico em criar pedido
+    Then eu vejo uma mensagem que o pedido foi cadastrado com sucesso
 
-#Positivo 2
-Scenario: editar pedido
-  Given eu estou logado como cliente de cpf '12345678910'
-  And o entregador com cpf '15985278994' existe
-  And o endereco com cep '56460000' existe
-  And estou na pagina de cadastro de pedido
-  When eu crio uma pizza com tamanho M e sabor 'Calabresa'
-  And escolho o endereco 'Rua nossa senhora da saude'
-  And clico em criar pedido 
-  And estou na pagina de pedido
-  And existe o pedido de ID ‘1’ 
-  And pedido esta com status 'Esperando Visualização'
-  When eu clico em editar pedido com ID ‘1’
-  And eu altero a pizza para o sabor 'Frango'
-  And eu clico em concluir
-  Then eu vejo uma mensagem que o pedido foi editado com sucesso
+  # Positivo
+  Scenario: editar pedido
+    Given o cliente com CPF '12345678910' e senha '123456' existe
+    And estou logado como cliente de cpf '12345678910' e senha '123456'
+    And o endereco com logradouro 'Rua B' existe
+    And o pedido de ID '1' para logradouro 'Rua B' existe
+    And o pedido de ID '1' tem status 'Esperando Visualização'
+    And estou na pagina de pedido
+    When eu clico em visualizar pedido de ID '1'
+    And clico em editar
+    And altero a pizza para tamanho 'G'
+    And clico em atualizar pedido
+    Then eu vejo uma mensagem que o pedido foi editado com sucesso
 
-#Positivo 3
-Scenario: visualizar pedido
-  Given eu estou logado como cliente de cpf '12345678910'
-  And o entregador com cpf '15985278994' existe
-  And o endereco com cep '56460000' existe
-  And estou na pagina de cadastro de pedido
-  When eu crio uma pizza com tamanho M e sabor 'Calabresa'
-  And escolho o endereco 'Rua nossa senhora da saude'
-  And clico em criar pedido 
-  And estou na pagina de pedido
-  And existe o pedido de ID ‘1’ 
-  And eu clico em visualizar pedido com ID ‘1’
-  Then eu vejo um pedido com status 'Esperando Visualização'
+  # Positivo
+  Scenario: visualizar pedido
+    Given o cliente com CPF '12345678910' e senha '123456' existe
+    And estou logado como cliente de cpf '12345678910' e senha '123456'
+    And o endereco com logradouro 'Rua B' existe
+    And o pedido de ID '1' para logradouro 'Rua B' existe
+    And estou na pagina de pedido
+    When eu clico em visualizar pedido de ID '1'
+    Then eu vejo o pedido com ID '1' e logradouro 'Rua B'
 
+  # Negativo
+  Scenario: cadastrar pedido sem pizza
+    Given o cliente com CPF '12345678910' e senha '123456' existe
+    And estou logado como cliente de cpf '12345678910' e senha '123456'
+    And o endereco com logradouro 'Rua B' existe
+    And estou na pagina de cadastro de pedido
+    When escolho o endereco com logradouro 'Rua B'
+    And clico em criar pedido
+    Then eu vejo uma mensagem para preencher os campos de pizza
 
-#Cenários negativos
-#Negativo 1
-Scenario: cadastrar pedido sem tamanho
-  Given eu estou logado como cliente de cpf '12345678910'
-  And o entregador com cpf '15985278994' existe
-  And o endereco com cep '56460000' existe
-  And estou na pagina de cadastro de pedido
-  When eu crio uma pizza sem tamanho e sabor
-  And clico em criar pedido
-  Then eu vejo uma mensagem para preencher os campos de pizza
-
-#Negativo 2
-Scenario: cadastrar pedido sem endereco
-  Given eu estou logado como cliente de cpf '12345678910'
-  And o entregador com cpf '15985278994' existe
-  And o endereco com cep '56460000' existe
-  And estou na pagina de cadastro de pedido
-  When eu crio uma pizza com tamanho M e sabor 'Calabresa'
-  And clico em criar pedido
-  Then eu vejo uma mensagem que o endereco nao existe
+  # Negativo
+  Scenario: cadastrar pedido sem endereco
+    Given o cliente com CPF '12345678910' e senha '123456' existe
+    And estou logado como cliente de cpf '12345678910' e senha '123456'
+    And estou na pagina de cadastro de pedido
+    When eu crio uma pizza com sabor 'Calabresa'
+    And escolho o tamanho 'M'
+    And clico em criar pedido
+    Then eu vejo uma mensagem que o endereco nao existe
