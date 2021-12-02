@@ -5,8 +5,8 @@ class CreatePedidos < ActiveRecord::Migration[6.1]
       t.integer :entregador_id , foreign_key: true
       t.float :precoTotal
       t.string :status
-      t.integer :qtdPizzas
-      t.text :obs
+      t.integer :quantidadePizzas
+      t.text :observacao
       t.string :nomeDest
       t.string :contato
 

@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(version: 2021_11_28_222817) do
     t.integer "entregador_id"
     t.float "precoTotal"
     t.string "status"
-    t.integer "qtdPizzas"
-    t.text "obs"
+    t.integer "quantidadePizzas"
+    t.text "observacao"
     t.string "nomeDest"
     t.string "contato"
     t.datetime "created_at", precision: 6, null: false
