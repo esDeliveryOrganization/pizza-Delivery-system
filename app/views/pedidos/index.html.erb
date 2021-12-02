@@ -6,6 +6,7 @@
 
   <thead>
     <tr>
+      <th>ID</th>
       <th>Endereco</th>
       <th>Entregador</th>
       <th>Precototal</th>
@@ -21,6 +22,7 @@
   <tbody>
     <% @pedidos.each do |pedido| %>
       <tr>
+        <td>p.<%= pedido.id %></td>
         <td><%= pedido.endereco.logradouro %></td>
         <td><%= pedido.entregador_id %></td>
         <td><%= pedido.precoTotal %></td>
