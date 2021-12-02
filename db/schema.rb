@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2021_11_28_222817) do
   end
 
   create_table "sabors", force: :cascade do |t|
-    t.string "nome"
+    t.string "descricaoSabor"
     t.float "preco"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

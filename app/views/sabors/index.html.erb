@@ -10,7 +10,7 @@
   <tbody>
     <% @sabors.each do |sabor| %>
       <tr>
-        <td><%= sabor.nome %></td>
+        <td><%= sabor.descricaoSabor %></td>
         <td><%= sabor.preco %></td>
         <td><%= link_to 'Show', sabor %></td>
         <td><%= link_to 'Edit', edit_sabor_path(sabor), id:"e-#{sabor.nome}" %></td>
