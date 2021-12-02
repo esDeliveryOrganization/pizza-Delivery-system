@@ -7,6 +7,10 @@ class SaborsController < ApplicationController
     @sabors = Sabor.all
   end
 
+  def showSabors
+    @sabor = Sabor.all
+  end
+
   # GET /sabors/1 or /sabors/1.json
   def show
   end
