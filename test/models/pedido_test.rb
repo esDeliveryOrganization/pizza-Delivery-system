@@ -24,8 +24,6 @@ class PedidoTest < ActiveSupport::TestCase
     #assert endereco.save
     entregador = Entregador.new cpf: '70460307146', nome: 'Entregador de teste', telefone: '87999132767'
     #assert entregador.save
-    sabor = Sabor.new nome: 'Sabor de teste', preco: '30.0'
-    #assert sabor.save
 
     pedido = Pedido.new(endereco_id: endereco.id, entregador_id: entregador.id, precoTotal: 1 * 23.0, status: 'Esperando Visualização', qtdPizzas: '1', obs: 'Nenhuma', nomeDest: usuario.nome, contato: usuario.telefone, cpfDest: usuario.cpf)
     assert_not pedido.save
