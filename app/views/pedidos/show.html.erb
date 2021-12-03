@@ -1,48 +1,42 @@
 <p id="notice"><%= notice %></p>
-
+<p>
+  <strong>ID:</strong>
+  <%= @pedido.id %>
+</p>
 <p>
   <strong>Endereco:</strong>
   <%= @pedido.endereco_id %>
 </p>
-
-
 <%if current_user.adm%>
   <p>
     <strong>Entregador:</strong>
     <%= @entregador %>
   </p>
 <%end%>
-
 <p>
   <strong>Precototal:</strong>
   <%= @pedido.precoTotal %>
 </p>
-
 <p>
   <strong>Status:</strong>
   <%= @pedido.status %>
 </p>
-
 <p>
-  <strong>Qtdpizzas:</strong>
-  <%= @pedido.qtdPizzas %>
+  <strong>QuantidadePizzas:</strong>
+  <%= @pedido.quantidadePizzas %>
 </p>
-
 <p>
-  <strong>Obs:</strong>
-  <%= @pedido.obs %>
+  <strong>Observacao:</strong>
+  <%= @pedido.observacao %>
 </p>
-
 <p>
   <strong>Nomedest:</strong>
   <%= @pedido.nomeDest %>
 </p>
-
 <p>
   <strong>Contato:</strong>
   <%= @pedido.contato %>
 </p>
-
 <%if !current_user.adm && (@pedido.status == "Esperando Visualização" || @pedido.status == "Visto")%>
   <%= link_to 'Edit', edit_pedido_path(@pedido) %> |
   <%= link_to 'Destroy', @pedido, method: :delete, data: { confirm: 'Are you sure?' } %> | 

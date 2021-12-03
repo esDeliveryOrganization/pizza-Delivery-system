@@ -41,17 +41,18 @@ ActiveRecord::Schema.define(version: 2021_11_28_222817) do
 
   create_table "pedidos", force: :cascade do |t|
     t.integer "endereco_id", null: false
-    t.integer "entregador_id"
+    t.integer "entregador_id", null: false
     t.float "precoTotal"
     t.string "status"
-    t.integer "qtdPizzas"
-    t.text "obs"
+    t.integer "quantidadePizzas"
+    t.text "observacao"
     t.string "nomeDest"
     t.string "contato"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "cpfDest"
     t.index ["endereco_id"], name: "index_pedidos_on_endereco_id"
+    t.index ["entregador_id"], name: "index_pedidos_on_entregador_id"
   end
 
   create_table "pizzas", force: :cascade do |t|
@@ -70,7 +71,7 @@ ActiveRecord::Schema.define(version: 2021_11_28_222817) do
   end
 
   create_table "sabors", force: :cascade do |t|
-    t.string "nome"
+    t.string "descricao"
     t.float "preco"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -93,4 +94,5 @@ ActiveRecord::Schema.define(version: 2021_11_28_222817) do
   end
 
   add_foreign_key "pedidos", "enderecos"
+  add_foreign_key "pedidos", "entregadors"
 end

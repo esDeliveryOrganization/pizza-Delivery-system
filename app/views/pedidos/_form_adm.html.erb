@@ -16,12 +16,12 @@
 
     <div class="field">
       <%= ff.label :sabor1 %>
-      <%= ff.collection_select(:sabor1_id, Sabor.all, :id, :nome, include_blank: "Escolha um sabor") %>
+      <%= ff.collection_select(:sabor1_id, Sabor.all, :id, :descricao, include_blank: "Escolha um sabor") %>
     </div>
 
     <div class="field">
       <%= ff.label :sabor2 %>
-      <%= ff.collection_select(:sabor2_id, Sabor.all, :id, :nome, include_blank: "Escolha um sabor") %>
+      <%= ff.collection_select(:sabor2_id, Sabor.all, :id, :descricao, include_blank: "Escolha um sabor") %>
     </div>
     <br/>
 
@@ -73,13 +73,13 @@
 
 
   <div class="field">
-    <%= form.label :qtdPizzas %>
-    <%= form.number_field :qtdPizzas, min: 1, max: 10, value: @pedido.qtdPizzas, :class => "form-controller", disabled: true %>
+    <%= form.label :quantidadePizzas %>
+    <%= form.number_field :quantidadePizzas, min: 1, max: 10, value: @pedido.quantidadePizzas, :class => "form-controller", disabled: true %>
   </div>
 
   <div class="field">
-    <%= form.label :obs %>
-    <%= form.text_area :obs %>
+    <%= form.label :observacao %>
+    <%= form.text_area :observacao %>
   </div>
 
   <div class="field">

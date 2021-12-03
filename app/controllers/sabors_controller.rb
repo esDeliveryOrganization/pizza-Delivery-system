@@ -7,6 +7,10 @@ class SaborsController < ApplicationController
     @sabors = Sabor.all
   end
 
+  def showSabors
+    @sabor = Sabor.all
+  end
+
   # GET /sabors/1 or /sabors/1.json
   def show
   end
@@ -65,6 +69,6 @@ class SaborsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def sabor_params
-      params.require(:sabor).permit(:nome, :preco)
+      params.require(:sabor).permit(:descricao, :preco)
     end
 end

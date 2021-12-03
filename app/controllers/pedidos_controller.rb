@@ -71,7 +71,7 @@ class PedidosController < ApplicationController
         @pedido.pizza.fatias = 12
       end
 
-      @pedido.precoTotal = @pedido.qtdPizzas * @pedido.pizza.preco
+      @pedido.precoTotal = @pedido.quantidadePizzas * @pedido.pizza.preco
 
     end
 
@@ -124,7 +124,7 @@ class PedidosController < ApplicationController
         @pedido.pizza.fatias = 12
       end
 
-      precoTotal = @pedido.qtdPizzas * @pedido.pizza.preco
+      precoTotal = @pedido.quantidadePizzas * @pedido.pizza.preco
       @pedido.update(precoTotal: precoTotal)
     end
   end
@@ -142,6 +142,6 @@ class PedidosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pedido_params
-      params.require(:pedido).permit(:endereco_id, :entregador_id, :precoTotal, :status, :qtdPizzas, :obs, :nomeDest, :contato, :cpfDest, :pizza_attributes => [:tamanho, :fatias, :preco, :desc, :sabor1_id, :sabor2_id])
+      params.require(:pedido).permit(:endereco_id, :entregador_id, :precoTotal, :status, :quantidadePizzas, :observacao, :nomeDest, :contato, :cpfDest, :pizza_attributes => [:tamanho, :fatias, :preco, :desc, :sabor1_id, :sabor2_id])
     end
 end
