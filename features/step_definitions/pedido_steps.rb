@@ -29,11 +29,12 @@ When('eu crio uma pizza com sabor {string}') do |sabor|
 end
 
 When('escolho o tamanho {string}') do |tamanho,|
-    if tamanho == 'P'
+    case tamanho
+    when 'P'
         choose('pedido_pizza_attributes_tamanho_1')
-    elsif tamanho == 'M'
+    when 'M'
         choose('pedido_pizza_attributes_tamanho_1_5')
-    elsif tamanho == 'G'
+    when 'G'
         choose('pedido_pizza_attributes_tamanho_1_8')
     end
 end
@@ -82,9 +83,10 @@ When('eu clico em editar') do
 end
 
 When('altero a pizza para tamanho {string}') do |tamanho|
-    if tamanho == 'P'
+    case tamanho
+    when 'P'
         choose('pedido_pizza_attributes_tamanho_1')
-    elsif tamanho == 'M'
+    when 'M'
         choose('pedido_pizza_attributes_tamanho_1_5')
     else
         choose('pedido_pizza_attributes_tamanho_1_8')
