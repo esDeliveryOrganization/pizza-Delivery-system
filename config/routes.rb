@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'menu_cliente/index'
   get 'clientes' => 'menu_adm#getClientes'
   get 'adms' => 'menu_adm#getAdms'
+
   resources :enderecos
   root 'home#index'
   devise_scope :user do
