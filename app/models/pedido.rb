@@ -10,8 +10,8 @@ class Pedido < ApplicationRecord
 
   validates :endereco_id, presence: true
   validates :entregador_id, presence: true
-  validates :qtdPizzas, presence: true
+  validates :quantidadePizzas, presence: true
   validates :contato, presence: true, numericality: { only_integer: true },  length: {is: 11}
-  validates :obs, length: { maximum: 40, too_long: "must have at maximum 40 characters" }
-  validates :nomeDest, presence: true, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
+  validates :observacao, length: { maximum: 40, too_long: "must have at maximum 40 characters" }
+  validates :nomeDestinatario, presence: true, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
 end
