@@ -20,8 +20,8 @@ Given('estou na pagina do horario da loja') do
     expect(page).to have_current_path('/lojas/1')
 end
 
-When('clico em editar') do
-    click_link "Edit"
+When('When eu clico em editar pedido de ID {string} ') do |id|
+    click_link "e-#{id}"
 end
 
 When('preencho horario de abertura com {string}') do |horario|
