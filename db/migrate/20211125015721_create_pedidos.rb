@@ -7,7 +7,7 @@ class CreatePedidos < ActiveRecord::Migration[6.1]
       t.string :status
       t.integer :quantidadePizzas
       t.text :observacao
-      t.string :nomeDest
+      t.string :nomeDestinatario
       t.string :contato
 
       t.timestamps

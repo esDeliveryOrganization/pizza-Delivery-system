@@ -5,7 +5,7 @@ class CreatePizzas < ActiveRecord::Migration[6.1]
       t.float :tamanho
       t.integer :fatias
       t.float :preco
-      t.text :desc
+      t.text :observacao
 
       t.timestamps
     end
