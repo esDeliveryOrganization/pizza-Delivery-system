@@ -142,6 +142,6 @@ class PedidosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pedido_params
-      params.require(:pedido).permit(:endereco_id, :entregador_id, :precoTotal, :status, :quantidadePizzas, :observacao, :nomeDest, :contato, :cpfDest, :pizza_attributes => [:tamanho, :fatias, :preco, :desc, :sabor1_id, :sabor2_id])
+      params.require(:pedido).permit(:endereco_id, :entregador_id, :precoTotal, :status, :quantidadePizzas, :observacao, :nomeDest, :contato, :cpfDest, :pizza_attributes => [:tamanho, :fatias, :preco, :observacao, :sabor1_id, :sabor2_id])
     end
 end

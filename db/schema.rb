@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2021_11_28_222817) do
     t.float "tamanho"
     t.integer "fatias"
     t.float "preco"
-    t.text "desc"
+    t.text "observacao"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "sabor1_id"
