@@ -7,15 +7,15 @@ class ApplicationController < ActionController::Base
   
   def settleSabors
     unless Sabor.all.any?
-      sabor1 = Sabor.new(descricaoSabor: 'Calabresa', preco: 20.5)
+      sabor1 = Sabor.new(descricao: 'Calabresa', preco: 20.5)
       sabor1.save
-      sabor2 = Sabor.new(descricaoSabor: 'Quatro Queijos', preco: 20.5)
+      sabor2 = Sabor.new(descricao: 'Quatro Queijos', preco: 20.5)
       sabor2.save
-      sabor3 = Sabor.new(descricaoSabor: 'Peperone', preco: 18.80)
+      sabor3 = Sabor.new(descricao: 'Peperone', preco: 18.80)
       sabor3.save
-      sabor4 = Sabor.new(descricaoSabor: 'Bacon', preco: 22.50)
+      sabor4 = Sabor.new(descricao: 'Bacon', preco: 22.50)
       sabor4.save
-      sabor5 = Sabor.new(descricaoSabor: 'Frango com Cheddar', preco: 21.30)
+      sabor5 = Sabor.new(descricao: 'Frango com Cheddar', preco: 21.30)
       sabor5.save
     end
   end

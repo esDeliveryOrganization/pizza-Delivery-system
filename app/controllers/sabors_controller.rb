@@ -69,6 +69,6 @@ class SaborsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def sabor_params
-      params.require(:sabor).permit(:descricaoSabor, :preco)
+      params.require(:sabor).permit(:descricao, :preco)
     end
 end

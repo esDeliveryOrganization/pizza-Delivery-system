@@ -2,7 +2,7 @@
 <table>
   <thead>
     <tr>
-      <th>Nome</th>
+      <th>Descricao</th>
       <th>Preco</th>
       <th colspan="3"></th>
     </tr>
@@ -11,7 +11,7 @@
     <% sabors = Sabor.all %>
     <% sabors.each do |sabor| %>
       <tr>
-        <td><%= sabor.descricaoSabor %></td>
+        <td><%= sabor.descricao %></td>
         <td><%= sabor.preco %></td>
       </tr>
     <% end %>

@@ -14,12 +14,12 @@
 
     <div class="field">
       <%= ff.label :sabor1 %>
-      <%= ff.collection_select(:sabor1_id, Sabor.all, :id, :descricaoSabor, include_blank: "Escolha um sabor") %>
+      <%= ff.collection_select(:sabor1_id, Sabor.all, :id, :descricao, include_blank: "Escolha um sabor") %>
     </div>
 
     <div class="field">
       <%= ff.label :sabor2 %>
-      <%= ff.collection_select(:sabor2_id, Sabor.all, :id, :descricaoSabor, include_blank: "Escolha um sabor") %>
+      <%= ff.collection_select(:sabor2_id, Sabor.all, :id, :descricao, include_blank: "Escolha um sabor") %>
     </div>
     <br/>
 
