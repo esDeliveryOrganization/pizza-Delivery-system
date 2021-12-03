@@ -12,7 +12,7 @@ class PedidoTest < ActiveSupport::TestCase
     sabor = Sabor.new descricao: 'Sabor de teste', preco: '30.0'
     #assert sabor.save
 
-    pedido = Pedido.new(endereco_id: endereco.id, entregador_id: entregador.id, precoTotal: 1 * 23.0, status: 'Esperando Visualização', quantidadePizzas: '1', observacao: 'Nenhuma', :pizza_attributes => {tamanho:'1', fatias:'6', preco:'23', desc: 'nenhuma', sabor1_id:sabor.id, sabor2_id:nil})
+    pedido = Pedido.new(endereco_id: endereco.id, entregador_id: entregador.id, precoTotal: 1 * 23.0, status: 'Esperando Visualização', quantidadePizzas: '1', observacao: 'Nenhuma', :pizza_attributes => {tamanho:'1', fatias:'6', preco:'23', observacao: 'nenhuma', sabor1_id:sabor.id, sabor2_id:nil})
     assert_not pedido.save
   end
 
@@ -25,7 +25,7 @@ class PedidoTest < ActiveSupport::TestCase
     entregador = Entregador.new cpf: '70460307146', nome: 'Entregador de teste', telefone: '87999132767'
     #assert entregador.save
 
-    pedido = Pedido.new(endereco_id: endereco.id, entregador_id: entregador.id, precoTotal: 1 * 23.0, status: 'Esperando Visualização', quantidadePizzas: '1', observacao: 'Nenhuma', nomeDest: usuario.nome, contato: usuario.telefone, cpfDest: usuario.cpf)
+    pedido = Pedido.new(endereco_id: endereco.id, entregador_id: entregador.id, precoTotal: 1 * 23.0, status: 'Esperando Visualização', quantidadePizzas: '1', observacao: 'Nenhuma', nomeDestinatario: usuario.nome, contato: usuario.telefone, cpfDest: usuario.cpf)
     assert_not pedido.save
   end
 
@@ -38,7 +38,7 @@ class PedidoTest < ActiveSupport::TestCase
     sabor = Sabor.new descricao: 'Sabor de teste', preco: '30.0'
     #assert sabor.save
 
-    pedido = Pedido.new(entregador_id: entregador.id, precoTotal: 1 * 23.0, status: 'Esperando Visualização', quantidadePizzas: '1', observacao: 'Nenhuma', nomeDest: usuario.nome, contato: usuario.telefone, cpfDest: usuario.cpf, :pizza_attributes => {tamanho:'1', fatias:'6', preco:'23', desc: 'nenhuma', sabor1_id:sabor.id, sabor2_id:nil})
+    pedido = Pedido.new(entregador_id: entregador.id, precoTotal: 1 * 23.0, status: 'Esperando Visualização', quantidadePizzas: '1', observacao: 'Nenhuma', nomeDestinatario: usuario.nome, contato: usuario.telefone, cpfDest: usuario.cpf, :pizza_attributes => {tamanho:'1', fatias:'6', preco:'23', observacao: 'nenhuma', sabor1_id:sabor.id, sabor2_id:nil})
     assert_not pedido.save
   end
 end
