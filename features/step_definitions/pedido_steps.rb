@@ -28,7 +28,7 @@ When('eu crio uma pizza com sabor {string}') do |sabor|
     select sabor, from:'pedido[pizza_attributes][sabor2_id]'
 end
 
-When('escolho o tamanho {string}') do |tamanho,|
+When('escolho o tamanho {string}') do |tamanho|
     case tamanho
     when 'P'
         choose('pedido_pizza_attributes_tamanho_1')
