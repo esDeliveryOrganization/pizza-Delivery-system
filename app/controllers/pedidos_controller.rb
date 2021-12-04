@@ -9,7 +9,7 @@ class PedidosController < ApplicationController
     if current_user.adm?
       @pedidos = Pedido.all
     else
-      @pedidos = Pedido.where(cpfDest: current_user.cpf)
+      @pedidos = Pedido.where(cpfDestinatario: current_user.cpf)
     end
   end
 
@@ -47,7 +47,7 @@ class PedidosController < ApplicationController
   # POST /pedidos or /pedidos.json
   def create
     @pedido = Pedido.new(pedido_params)
-    @pedido.cpfDest = current_user.cpf
+    @pedido.cpfDestinatario = current_user.cpf
     @pedido.nomeDestinatario ||= current_user.nome
     @pedido.contato ||= current_user.telefone
 
@@ -142,6 +142,6 @@ class PedidosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pedido_params
-      params.require(:pedido).permit(:endereco_id, :entregador_id, :precoTotal, :status, :quantidadePizzas, :observacao, :nomeDestinatario, :contato, :cpfDest, :pizza_attributes => [:tamanho, :fatias, :preco, :observacao, :sabor1_id, :sabor2_id])
+      params.require(:pedido).permit(:endereco_id, :entregador_id, :precoTotal, :status, :quantidadePizzas, :observacao, :nomeDestinatario, :contato, :cpfDestinatario, :pizza_attributes => [:tamanho, :fatias, :preco, :observacao, :sabor1_id, :sabor2_id])
     end
 end

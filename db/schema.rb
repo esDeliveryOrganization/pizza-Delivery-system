@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2021_11_28_222817) do
     t.string "contato"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "cpfDest"
+    t.string "cpfDestinatario"
     t.index ["endereco_id"], name: "index_pedidos_on_endereco_id"
     t.index ["entregador_id"], name: "index_pedidos_on_entregador_id"
   end
