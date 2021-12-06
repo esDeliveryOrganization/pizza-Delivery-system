@@ -30,8 +30,8 @@ class ApplicationController < ActionController::Base
 
   def settleEntregador
     unless Entregador.all.any?
-      deliverBoy = Entregador.new(nome: "João", cpf: "98765415921", telefone: "87911999999")
-      deliverBoy.save
+      entregador = Entregador.new(nome: "João", cpf: "98765415921", telefone: "87911999999")
+      entregador.save
     end
   end
 
