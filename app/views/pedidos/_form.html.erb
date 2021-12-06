@@ -1,7 +1,7 @@
 <%= form_with(model: pedido) do |form| %>
 
   <%=  form.fields_for :pizza do |ff| %>
-    <div class="text-center">
+    <div class='field'>
       <% tamanhos = {"Tamanho G" => 1.8, "Tamanho M" => 1.5, "Tamanho P" => 1} %>
       <fieldset>
         <% lista = tamanhos.sort %>
@@ -11,12 +11,12 @@
         <% end %>
       </fieldset>
     </div>
-    <br/>
-    <div class="text-center">
+
+    <div class="field">
       <%= ff.collection_select(:sabor1_id, Sabor.all, :id, :descricao, include_blank: "Escolha um sabor") %>
     </div>
 
-    <div class="text-center">
+    <div class="field">
       <%= ff.collection_select(:sabor2_id, Sabor.all, :id, :descricao, include_blank: "Escolha um sabor") %>
     </div>
     <br/>
@@ -32,7 +32,7 @@
     <br/>
 
     <div class="field form-group">
-      <%= ff.text_area :desc, class: "form-control", placeholder: "Descrição" %>
+      <%= ff.text_area :observacao, class: "form-control", placeholder: "Descrição" %>
     </div>
     <br/>
   <% end %>
@@ -49,14 +49,14 @@
       </ul>
     </div>
   <% end %>
-  <div class="text-center">
+  <div class="field">
     <%= form.collection_select(:endereco_id, current_user.enderecos, :id, :logradouro, include_blank: "Enderecos")%>
   </div>
 
   <br/>
 
   <% if current_user.adm? %>
-    <div class="text-center">
+    <div class="field">
       <%= form.collection_select(:entregador_id, Entregador.all, :id, :nome, include_blank: "Entregador")%>
     </div>
   <% end %>
@@ -76,7 +76,7 @@
   </div>
 
   <div class="field form-group">
-    <%= form.text_field :nomeDest,  value: current_user.nome, :class => "form-controller", placeholder: "Nome Destinatário"%>
+    <%= form.text_field :nomeDestinatario,  value: current_user.nome, :class => "form-controller", placeholder: "Nome Destinatário"%>
   </div>
 
   <div class="field form-group">
@@ -84,7 +84,7 @@
   </div>
 
   <% if current_user.adm? %>
-    <div class="text-center">
+    <div class="field">
       <% status = {"Esperando Visualização" => "Esperando Visualização", "Visto" => "Visto", "Em preparo" => "Em preparo", "Saiu para entrega" => "Saiu para entrega", "Entregue" => "Entregue", "Cancelado" => "Cancelado"} %>
       <fieldset>
         <h5>Status</h5>

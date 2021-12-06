@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
 
   def settleLoja
     unless Loja.all.any?
-      loja = Loja.new abertura: "18:00", fechamento: "23:59"
+      loja = Loja.new abertura: "00:00", fechamento: "23:59"
       loja.save
     end
   end
