@@ -13,5 +13,5 @@ class Pedido < ApplicationRecord
   validates :quantidadePizzas, presence: true
   validates :contato, presence: true, numericality: { only_integer: true },  length: {is: 11}
   validates :observacao, length: { maximum: 40, too_long: "must have at maximum 40 characters" }
-  validates :nomeDestinatario, presence: true, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
+  validates :nomeDestinatario, presence: true, length: {minimum: 3, too_short: "must have at least 3 characters "}, length: { maximum: 30, too_long: "must have at maximum 30 characters" }
 end
