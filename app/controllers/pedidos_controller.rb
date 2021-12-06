@@ -53,15 +53,7 @@ class PedidosController < ApplicationController
 
     unless @pedido.pizza.nil?
       # Associação dos sabores e tamanhos escolhidos
-      if !@pedido.pizza.sabor1_id.nil? && !@pedido.pizza.sabor2_id.nil?
-        @pedido.pizza.preco = (Sabor.find_by(id: @pedido.pizza.sabor1_id).preco/2) + (Sabor.find_by(id: @pedido.pizza.sabor2_id).preco/2)
-        @pedido.pizza.preco *= @pedido.pizza.tamanho
-      elsif !@pedido.pizza.sabor1_id.nil? && @pedido.pizza.sabor2_id.nil?
-        @pedido.pizza.preco = Sabor.find_by(id: @pedido.pizza.sabor1_id).preco * @pedido.pizza.tamanho 
-
-      elsif @pedido.pizza.sabor1_id.nil? && !@pedido.pizza.sabor2_id.nil?
-        @pedido.pizza.preco = Sabor.find_by(id: @pedido.pizza.sabor2_id).preco * @pedido.pizza.tamanho
-      end
+      definir_preco_da_pizza
 
       definir_quantidade_de_fatias
 
@@ -81,6 +73,18 @@ class PedidosController < ApplicationController
         format.json { render json: @pedido.errors, status: :unprocessable_entity }
         @pedido.build_pizza
       end
+    end
+  end
+
+  def definir_preco_da_pizza
+    if !@pedido.pizza.sabor1_id.nil? && !@pedido.pizza.sabor2_id.nil?
+      @pedido.pizza.preco = (Sabor.find_by(id: @pedido.pizza.sabor1_id).preco / 2) + (Sabor.find_by(id: @pedido.pizza.sabor2_id).preco / 2)
+      @pedido.pizza.preco *= @pedido.pizza.tamanho
+    elsif !@pedido.pizza.sabor1_id.nil? && @pedido.pizza.sabor2_id.nil?
+      @pedido.pizza.preco = Sabor.find_by(id: @pedido.pizza.sabor1_id).preco * @pedido.pizza.tamanho
+
+    elsif @pedido.pizza.sabor1_id.nil? && !@pedido.pizza.sabor2_id.nil?
+      @pedido.pizza.preco = Sabor.find_by(id: @pedido.pizza.sabor2_id).preco * @pedido.pizza.tamanho
     end
   end
 
@@ -108,15 +112,7 @@ class PedidosController < ApplicationController
     
     unless @pedido.pizza.nil?
       # Associação dos sabores e tamanhos escolhidos
-      if !@pedido.pizza.sabor1_id.nil? && !@pedido.pizza.sabor2_id.nil?
-        @pedido.pizza.preco = (Sabor.find_by(id: @pedido.pizza.sabor1_id).preco/2) + (Sabor.find_by(id: @pedido.pizza.sabor2_id).preco/2)
-        @pedido.pizza.preco *= @pedido.pizza.tamanho
-      elsif !@pedido.pizza.sabor1_id.nil? && @pedido.pizza.sabor2_id.nil?
-        @pedido.pizza.preco = Sabor.find_by(id: @pedido.pizza.sabor1_id).preco * @pedido.pizza.tamanho 
-
-      elsif @pedido.pizza.sabor1_id.nil? && !@pedido.pizza.sabor2_id.nil?
-        @pedido.pizza.preco = Sabor.find_by(id: @pedido.pizza.sabor2_id).preco * @pedido.pizza.tamanho
-      end
+      definir_preco_da_pizza
 
       definir_quantidade_de_fatias
 
