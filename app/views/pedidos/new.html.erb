@@ -1,5 +1,5 @@
-<h1>Monte sua Pizza</h1>
+<h1 class="text-center">Monte sua Pizza</h1>
 
-<%= render 'form', pedido: @pedido, pizza: @pizza %>
+<%= render 'form', pedido: @pedido, pizza: @pizza, class: "btn btn-outline-dark" %>
 
-<%= link_to 'Voltar', pedidos_path %>
+<%= link_to 'Voltar', pedidos_path, class: "btn btn-outline-dark" %>

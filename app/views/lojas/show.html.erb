@@ -1,14 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Abertura:</strong>
-  <%= @loja.abertura.strftime("%H:%M") %>
-</p>
-
-<p>
-  <strong>Fechamento:</strong>
-  <%= @loja.fechamento.strftime("%H:%M") %>
-</p>
-
-<%= link_to 'Edit', edit_loja_path(@loja) %> |
-<%= link_to 'Back',  root_path %>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 style="color: #fd7e14" class="card-title">Abertura: <%= @loja.abertura.strftime("%H:%M") %></h5>
+    <h5 style="color: #fd7e14" class="card-title">Fechamento: <%= @loja.fechamento.strftime("%H:%M") %></h6>
+    <%= link_to 'Editar', edit_loja_path(@loja), class:"btn btn-outline-dark" %> 
+    <%= link_to 'Voltar', root_path, class:"btn btn-outline-dark" %>  
+  </div>
+</div>

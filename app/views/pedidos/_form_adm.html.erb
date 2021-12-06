@@ -27,24 +27,24 @@
 
     <div class="field">
       <%= ff.label :fatias %>
-      <%= ff.number_field :fatias, disabled: true %>
+      <%= ff.number_field :fatias, disabled: true, class: "form-control", placeholder: "Fatias"%>
     </div>
     <br/>
 
     <div class="field">
       <%= ff.label :preco %>
-      <%= ff.text_field :preco, disabled: true %>
+      <%= ff.text_field :preco, disabled: true, class: "form-control", placeholder: "Preço" %>
     </div>
     <br/>
 
     <div class="field">
       <%= ff.label :observacao %>
-      <%= ff.text_area :observacao, disabled: true %>
+      <%= ff.text_area :observacao, disabled: true, class: "form-control", placeholder: "Descrição" %>
     </div>
     <br/>
   <% end %>
 
-  <h1> Informações do Pedido </h1>
+  <h1 class="text-center"> Informações do Pedido </h1>
   <% if pedido.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(pedido.errors.count, "error") %> prohibited this pedido from being saved:</h2>
@@ -57,43 +57,42 @@
     </div>
   <% end %>
 
-
   <% if current_user.adm? %>
     <div class="field">
       <%= form.label :entregador_id %>
       <%= form.collection_select(:entregador_id, Entregador.all, :id, :nome, include_blank: "Entregador") %>
     </div>
   <% end %>
-
+ 
 
   <div class="field">
     <%= form.label :precoTotal %>
-    <%= form.text_field :precoTotal, disabled: true %>
+    <%= form.text_field :precoTotal, disabled: true, class: "form-control", placeholder: "Preço Total" %>
   </div>
 
 
   <div class="field">
     <%= form.label :quantidadePizzas %>
-    <%= form.number_field :quantidadePizzas, min: 1, max: 10, value: @pedido.quantidadePizzas, :class => "form-controller", disabled: true %>
+    <%= form.number_field :quantidadePizzas, min: 1, max: 10, value: @pedido.quantidadePizzas, :class => "form-controller", disabled: true, placeholder: "Quantidade de Pizzas" %>
   </div>
 
   <div class="field">
     <%= form.label :observacao %>
-    <%= form.text_area :observacao %>
+    <%= form.text_area :observacao, class: "form-control", placeholder: "Observação" %>
   </div>
 
   <div class="field">
     <%= form.label :nomeDestinatario %>
-    <%= form.text_field :nomeDestinatario, disabled: true%>
+    <%= form.text_field :nomeDestinatario, disabled: true, class: "form-control", placeholder: "Observação"%>
   </div>
 
   <div class="field">
     <%= form.label :contato %>
-    <%= form.text_field :contato, disabled: true%>
+    <%= form.text_field :contato, disabled: true, class: "form-control", placeholder: "Observação"%>
   </div>
 
   <% if current_user.adm? %>
-    <div class='field'>
+    <div class="text-center">
       <% status = {"Esperando Visualização" => "Esperando Visualização", "Visto" => "Visto", "Em preparo" => "Em preparo", "Saiu para entrega" => "Saiu para entrega", "Entregue" => "Entregue", "Cancelado" => "Cancelado"} %>
       <fieldset>
         <h5>Status</h5>
@@ -106,9 +105,8 @@
     </div>
   <% end %>
 
-  <div class="actions">
+  <div class="text-center">
     <%= form.submit %>
   </div>
-
    
 <% end %>

@@ -11,17 +11,16 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :descricao %>
-    <%= form.text_field :descricao %>
+  <div class="field form-group">
+
+    <%= form.text_field :descricao, class: "form-control", placeholder: "Descrição" %>
   </div>
 
-  <div class="field">
-    <%= form.label :preco %>
-    <%= form.text_field :preco %>
+  <div class="field form-group">
+    <%= form.text_field :preco, class: "form-control", placeholder: "Preço" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions form-group">
+    <%= form.submit class: "btn btn-outline-dark" %>
   </div>
 <% end %>

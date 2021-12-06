@@ -1,14 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Descricao:</strong>
-  <%= @sabor.descricao %>
-</p>
-
-<p>
-  <strong>Preco:</strong>
-  <%= @sabor.preco %>
-</p>
-
-<%= link_to 'Edit', edit_sabor_path(@sabor) %> |
-<%= link_to 'Back', sabors_path %>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 style="color: #fd7e14" class="card-title"><%= @sabor.descricao %></h5>
+    <h6 style="color: #000000" class="card-subtitle mb-2"><%= @sabor.preco %></h6>
+    <%= link_to 'Editar', edit_sabor_path(@sabor), class:"btn btn-outline-dark" %> 
+    <%= link_to 'Voltar', sabors_path, class:"btn btn-outline-dark" %>  
+  </div>
+</div>

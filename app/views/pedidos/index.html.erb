@@ -1,10 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Pedidos</h1>
+<h1 class="text-center">Pedidos</h1>
 
-<table>
+<table class="table bg-dark">
 
-  <thead>
+  <thead class="text-center table-dark">
     <tr>
       <th>ID</th>
       <th>Endereco</th>
@@ -21,7 +21,7 @@
 
   <tbody>
     <% @pedidos.each do |pedido| %>
-      <tr>
+      <tr class="text-center table-warning">
         <td>p.<%= pedido.id %></td>
         <td><%= pedido.endereco.logradouro %></td>
         <td><%= pedido.entregador_id %></td>
@@ -31,11 +31,11 @@
         <td><%= pedido.observacao %></td>
         <td><%= pedido.nomeDestinatario %></td>
         <td><%= pedido.contato %></td>
-        <td><%= link_to 'Show', pedido, id:"S-#{pedido.id}" %></td>
+        <td><%= link_to 'Show', pedido, id:"S-#{pedido.id}", class: "btn btn-outline-dark" %></td>
         
         <%if current_user.adm%>
-          <td><%= link_to 'Edit', edit_pedido_path(pedido), id:"e-#{pedido.id}" %></td>
-          <td><%= link_to 'Destroy', pedido,  method: :delete, data: { confirm: 'Are you sure?' }, id:"D-#{pedido.id}" %></td>
+          <td><%= link_to 'Edit', edit_pedido_path(pedido), id:"e-#{pedido.id}", class: "btn btn-outline-dark" %></td>
+          <td><%= link_to 'Destroy', pedido,  method: :delete, data: { confirm: 'Are you sure?' }, id:"D-#{pedido.id}", class: "btn btn-outline-dark" %></td>
         <%end%>
       </tr>
     <% end %>
@@ -44,5 +44,5 @@
 
 <br>
 
-<%= link_to 'Fazer um Pedido', new_pedido_path %> |
-<%= link_to 'Home', root_path %>
+<%= link_to 'Fazer um Pedido', new_pedido_path, class: "btn btn-outline-dark" %> 
+<%= link_to 'Home', root_path, class: "btn btn-outline-dark" %>

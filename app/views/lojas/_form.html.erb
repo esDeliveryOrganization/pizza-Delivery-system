@@ -11,17 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :abertura %>
-    <%= form.time_field :abertura %>
+    <%= form.time_field :abertura, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :fechamento %>
-    <%= form.time_field :fechamento %>
+    <%= form.time_field :fechamento, class: "form-control" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <br/>
+  
+  <div class="text-center">
+    <%= form.submit class: "btn btn-outline-dark" %>
   </div>
 <% end %>
