@@ -1,44 +1,39 @@
-<p id="notice"><%= notice %></p>
-<p>
-  <strong>ID:</strong>
-  <%= @pedido.id %>
-</p>
-<p>
-  <strong>Endereco:</strong>
-  <%= @pedido.endereco_id %>
-</p>
-<%if current_user.adm%>
-  <p>
-    <strong>Entregador:</strong>
-    <%= @entregador %>
-  </p>
+<% a = Pizza.find_by(id: @pedido.id)%>
+<% if !a.sabor1_id.nil? && !a.sabor2_id.nil? %>
+  <% s1 = Sabor.find_by(id: a.sabor1_id)%>
+  <% s2 = Sabor.find_by(id: a.sabor2_id)%>
+<% elsif !a.sabor1_id.nil? && a.sabor2_id.nil? %>
+  <% s1 = Sabor.find_by(id: a.sabor1_id)%>
+<% else %>
+  <% s2 = Sabor.find_by(id: a.sabor2_id)%>
 <%end%>
-<p>
-  <strong>Precototal:</strong>
-  <%= @pedido.precoTotal %>
-</p>
-<p>
-  <strong>Status:</strong>
-  <%= @pedido.status %>
-</p>
-<p>
-  <strong>QuantidadePizzas:</strong>
-  <%= @pedido.quantidadePizzas %>
-</p>
-<p>
-  <strong>Observacao:</strong>
-  <%= @pedido.observacao %>
-</p>
-<p>
-  <strong>Nomedest:</strong>
-  <%= @pedido.nomeDest %>
-</p>
-<p>
-  <strong>Contato:</strong>
-  <%= @pedido.contato %>
-</p>
-<%if !current_user.adm && (@pedido.status == "Esperando Visualização" || @pedido.status == "Visto")%>
-  <%= link_to 'Edit', edit_pedido_path(@pedido) %> |
-  <%= link_to 'Destroy', @pedido, method: :delete, data: { confirm: 'Are you sure?' } %> | 
-<%end%>
-<%= link_to 'Back', pedidos_path %>
+
+<% e = Endereco.find_by(id: @pedido.endereco_id)%>
+
+
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 style="color: #fd7e14" class="card-title"><%= @pedido.quantidadePizzas %> X </h5>
+    <% if !a.sabor1_id.nil? && !a.sabor2_id.nil? %>
+      <h5 style="color: #fd7e14" class="card-title"><%= s1.descricao %> | <h5 style="color: #fd7e14" class="card-title"><%= s2.descricao %> </h5>
+    <% elsif !a.sabor1_id.nil? && a.sabor2_id.nil? %>
+      <h5 style="color: #fd7e14" class="card-title"><%= s1.descricao %>
+    <% else %>
+      <h5 style="color: #fd7e14" class="card-title"><%= s2.descricao %>
+    <%end%>
+    <h6 style="color: #000000" class="card-subtitle mb-2"><%= @pedido.nomeDest %>, <%= @pedido.contato %> </h6>
+    <h6 style="color: #000000" class="card-subtitle mb-2"><%= e.logradouro %></h6>
+    <%if current_user.adm%>
+      <h6 style="color: #000000" class="card-subtitle mb-2"><%= @entregador %></h6>
+    <%end%>
+    <h6 style="color: #000000" class="card-subtitle mb-2"> Preço total: R$ <%= @pedido.precoTotal %></h6>
+    <h6 style="color: #000000" class="card-subtitle mb-2">Observação: <%= @pedido.observacao %></h6>
+    <h6 style="color: #000000" class="card-subtitle mb-2"><%= @pedido.status %></h6>
+    <%if !current_user.adm && (@pedido.status == "Esperando Visualização" || @pedido.status == "Visto")%>
+      <%= link_to 'Edit', edit_pedido_path(@pedido), class:"btn btn-outline-dark" %> |
+      <%= link_to 'Destroy', @pedido, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-dark" %> | 
+    <%end%>
+    <%= link_to 'Voltar', pedidos_path, class:"btn btn-outline-dark" %>  
+  </div>
+</div>

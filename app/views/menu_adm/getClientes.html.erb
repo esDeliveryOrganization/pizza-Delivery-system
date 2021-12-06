@@ -1,26 +1,24 @@
-<table>
-  <thead>
+<h1 class="text-center">Clientes</h1>
+
+<table class="table bg-dark">
+  <thead class="text-center table-dark">
     <tr>
       <th>Nome</th>
       <th>Email</th>
-      <th>Cpf</th>
+      <th>CPF</th>
       <th>Telefone</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
   <tbody>
     <% @clientes.each do |cliente| %>
-      <tr>
+      <tr class="text-center table-warning">
         <td><%= cliente.nome %></td>
         <td><%= cliente.email %></td>
         <td><%= cliente.cpf %></td>
         <td><%= cliente.telefone %></td>
-        <td><%= link_to 'Edit', clientes_path %></td>
-        <td><%= link_to 'Destroy', clientes_path %></td>
-        <%# <%= link_to 'Destroy', cliente, data: { confirm: "Are you sure?" }, method: :delete , cpf:"a-#{cliente.cpf}"%>
       </tr>
     <% end %>
   </tbody>
 </table>
-<li><%= link_to "Novo Cliente", new_user_registration_path %></li>
-<li><%= link_to "Back", root_path %></li>
+<%= link_to "Novo Cliente", new_user_registration_path, class: "btn btn-outline-dark" %>
+<%= link_to "Back", root_path, class: "btn btn-outline-dark" %>

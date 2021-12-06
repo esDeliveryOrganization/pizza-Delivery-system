@@ -1,7 +1,7 @@
 <%= form_with(model: pedido) do |form| %>
 
   <%=  form.fields_for :pizza do |ff| %>
-    <div class='field'>
+    <div class="text-center">
       <% tamanhos = {"Tamanho G" => 1.8, "Tamanho M" => 1.5, "Tamanho P" => 1} %>
       <fieldset>
         <% lista = tamanhos.sort %>
@@ -11,38 +11,33 @@
         <% end %>
       </fieldset>
     </div>
-
-    <div class="field">
-      <%= ff.label :sabor1 %>
+    <br/>
+    <div class="text-center">
       <%= ff.collection_select(:sabor1_id, Sabor.all, :id, :descricao, include_blank: "Escolha um sabor") %>
     </div>
 
-    <div class="field">
-      <%= ff.label :sabor2 %>
+    <div class="text-center">
       <%= ff.collection_select(:sabor2_id, Sabor.all, :id, :descricao, include_blank: "Escolha um sabor") %>
     </div>
     <br/>
 
-    <div class="field">
-      <%= ff.label :fatias %>
-      <%= ff.number_field :fatias, disabled: true %>
+    <div class="field form-group">
+      <%= ff.number_field :fatias, disabled: true, class: "form-control", placeholder: "Fatias" %>
     </div>
     <br/>
 
-    <div class="field">
-      <%= ff.label :preco %>
-      <%= ff.text_field :preco, disabled: true %>
+    <div class="field form-group">
+      <%= ff.text_field :preco, disabled: true, class: "form-control", placeholder: "Preço" %>
     </div>
     <br/>
 
-    <div class="field">
-      <%= ff.label :desc %>
-      <%= ff.text_area :desc %>
+    <div class="field form-group">
+      <%= ff.text_area :desc, class: "form-control", placeholder: "Descrição" %>
     </div>
     <br/>
   <% end %>
 
-  <h1> Informações do Pedido </h1>
+  <h1 class="text-center"> Informações do Pedido </h1>
   <% if pedido.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(pedido.errors.count, "error") %> prohibited this pedido from being saved:</h2>
@@ -54,47 +49,42 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= form.label :endereco_id %>
-    <%= form.collection_select(:endereco_id, current_user.enderecos, :id, :logradouro, include_blank: "Enderecos") %>
+  <div class="text-center">
+    <%= form.collection_select(:endereco_id, current_user.enderecos, :id, :logradouro, include_blank: "Enderecos")%>
   </div>
 
+  <br/>
+
   <% if current_user.adm? %>
-    <div class="field">
-      <%= form.label :entregador_id %>
-      <%= form.collection_select(:entregador_id, Entregador.all, :id, :nome, include_blank: "Entregador") %>
+    <div class="text-center">
+      <%= form.collection_select(:entregador_id, Entregador.all, :id, :nome, include_blank: "Entregador")%>
     </div>
   <% end %>
 
 
-  <div class="field">
-    <%= form.label :precoTotal %>
-    <%= form.text_field :precoTotal, disabled: true %>
+  <div class="field form-group">
+    <%= form.text_field :precoTotal, disabled: true, class: "form-control", placeholder: "Preço Total" %>
   </div>
 
 
-  <div class="field">
-    <%= form.label :quantidadePizzas %>
-    <%= form.number_field :quantidadePizzas, min: 1, max: 10, value: 1, :class => "form-controller" %>
+  <div class="field form-group">
+    <%= form.number_field :quantidadePizzas, min: 1, max: 10, value: 1, :class => "form-control", include_blank: "Quantidade de Pizzas" %>
   </div>
 
-  <div class="field">
-    <%= form.label :observacao %>
-    <%= form.text_area :observacao %>
+  <div class="field form-group">
+    <%= form.text_area :observacao, class: "form-control", placeholder: "Observação"%>
   </div>
 
-  <div class="field">
-    <%= form.label :nomeDest %>
-    <%= form.text_field :nomeDest,  value: current_user.nome, :class => "form-controller"%>
+  <div class="field form-group">
+    <%= form.text_field :nomeDest,  value: current_user.nome, :class => "form-controller", placeholder: "Nome Destinatário"%>
   </div>
 
-  <div class="field">
-    <%= form.label :contato %>
-    <%= form.text_field :contato, value: current_user.telefone, :class => "form-controller"%>
+  <div class="field form-group">
+    <%= form.text_field :contato, value: current_user.telefone, :class => "form-controller", placeholder: "Contato"%>
   </div>
 
   <% if current_user.adm? %>
-    <div class='field'>
+    <div class="text-center">
       <% status = {"Esperando Visualização" => "Esperando Visualização", "Visto" => "Visto", "Em preparo" => "Em preparo", "Saiu para entrega" => "Saiu para entrega", "Entregue" => "Entregue", "Cancelado" => "Cancelado"} %>
       <fieldset>
         <h5>Status</h5>
@@ -107,9 +97,7 @@
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= form.submit  %>
+  <div class="text-center">
+    <%= form.submit class: "btn btn-outline-dark" %>
   </div>
-
-   
 <% end %>

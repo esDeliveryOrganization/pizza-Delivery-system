@@ -11,22 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :nome %>
-    <%= form.text_field :nome %>
+  <div class="field form-group">
+    <%= form.text_field :nome, class: "form-control", placeholder: "Nome" %>
   </div>
 
-  <div class="field">
-    <%= form.label :telefone %>
-    <%= form.text_field :telefone %>
+  <div class="field form-group">
+    <%= form.text_field :telefone, class: "form-control", placeholder: "Telefone" %>
   </div>
 
-  <div class="field">
-    <%= form.label :cpf %>
-    <%= form.text_field :cpf %>
+  <div class="field form-group">
+    <%= form.text_field :cpf, class: "form-control", placeholder: "CPF" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="text-center">
+    <%= form.submit class: "btn btn-outline-dark" %>
   </div>
 <% end %>

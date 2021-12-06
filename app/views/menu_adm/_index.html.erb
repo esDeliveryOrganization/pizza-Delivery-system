@@ -1,10 +1,10 @@
 <h1>Menu</h1>
 <h2>Bem Vindo Administrador</h2>
-<li><%= link_to "Pedidos", pedidos_path %></li>
-<li><%= link_to "Sabores", sabors_path %></li>
-<li><%= link_to "Clientes", clientes_path %></li>
-<li><%= link_to "Administradores", adms_path %></li>
-<li><%= link_to "Entregadores", entregadors_path %></li>
-<li><%= link_to "Loja", @loja %></li>
-<li><%= link_to 'Editar login', edit_user_registration_path%></li>
-<li><%= link_to 'Sair', destroy_user_session_path, method: :delete%></li>
+<% link_to "Pedidos", pedidos_path %>
+<% link_to "Sabores", sabors_path %>
+<% link_to "Clientes", clientes_path %>
+<% link_to "Administradores", adms_path %>
+<% link_to "Entregadores", entregadors_path %>
+<% link_to "Loja", @loja %>
+<% link_to 'Editar login', edit_user_registration_path%>
+<% link_to 'Sair', destroy_user_session_path, method: :delete%>
