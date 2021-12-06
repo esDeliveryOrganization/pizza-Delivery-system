@@ -79,7 +79,7 @@ When('eu clico em visualizar pedido de ID {string}') do |id|
 end
 
 When('eu clico em editar') do
-    click_link 'Edit'
+    click_link 'Editar'
 end
 
 When('altero a pizza para tamanho {string}') do |tamanho|
@@ -104,7 +104,7 @@ end
 Then('eu vejo o pedido com ID {string} e logradouro {string}') do |id, logradouro|
     texto_esperado = 'ID: ' + id
     expect(page).to have_content(texto_esperado)
-    texto_esperado = 'Endereco: ' + id
+    texto_esperado = 'Endereço: ' + id
     expect(page).to have_content(texto_esperado)
 end
 

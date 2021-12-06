@@ -1,0 +1,53 @@
+<%= form_with(model: pizza) do |form| %>
+  <% if pizza.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(pizza.errors.count, "error") %> prohibited this pizza from being saved:</h2>
+
+      <ul>
+        <% pizza.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class='field form-group'>
+    <% tamanhos = {"Tamanho G" => 1.8, "Tamanho M" => 1.5, "Tamanho P" => 1} %>
+    <fieldset>
+      <% lista = tamanhos.sort %>
+      <% lista.each do |tamanho| %>
+        <%= form.radio_button :tamanho, tamanho[1] %>
+        <label for="<%= tamanho[1] %>" ><%= tamanho[0] %> </label>
+      <% end %>
+    </fieldset>
+  </div>
+  <br/>
+
+   <div class="field form-group">
+    <%= form.collection_select(:sabor1_id, Sabor.all, :id, :nome, include_blank: "Escolha um sabor") %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.collection_select(:sabor2_id, Sabor.all, :id, :nome, include_blank: "Escolha um sabor") %>
+  </div>
+  <br/>
+
+  <div class="field form-group">
+    <%= form.number_field :fatias, disabled: true, class: "form-control", placeholder: "Fatias" %>
+  </div>
+  <br/>
+
+  <div class="field form-group">
+    <%= form.text_field :preco, disabled: true, class: "form-control", placeholder: "Preço" %>
+  </div>
+  <br/>
+
+  <div class="field form-group">
+    <%= form.text_area :desc , class: "form-control", placeholder: "Descrição" %>
+  </div>
+  <br/>
+
+  <div class="actions">
+    <%= form.submit class: "btn btn-outline-dark" %>
+  </div>
+<% end %>

@@ -1,6 +1,6 @@
-<h1>Sabors</h1>
-<table>
-  <thead>
+<h1 class="text-center">Sabors</h1>
+<table class="table bg-dark">
+  <thead class="text-center table-dark">
     <tr>
       <th>Descricao</th>
       <th>Preco</th>
@@ -9,16 +9,16 @@
   </thead>
   <tbody>
     <% @sabors.each do |sabor| %>
-      <tr>
+      <tr class="text-center table-warning">
         <td><%= sabor.descricao %></td>
         <td><%= sabor.preco %></td>
-        <td><%= link_to 'Show', sabor %></td>
-        <td><%= link_to 'Edit', edit_sabor_path(sabor), id:"e-#{sabor.descricao}" %></td>
-        <td><%= button_to 'Destroy', sabor, method: :delete, data: { confirm: 'Are you sure?' }, id:"a-#{sabor.descricao}" %></td>
+        <td><%= link_to 'Show', sabor, class: "btn btn-outline-dark" %></td>
+        <td><%= link_to 'Edit', edit_sabor_path(sabor), id:"e-#{sabor.descricao}", class: "btn btn-outline-dark" %></td>
+        <td><%= button_to 'Destroy', sabor, method: :delete, data: { confirm: 'Are you sure?' }, id:"a-#{sabor.descricao}", class: "btn btn-outline-dark" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 <br>
-<%= link_to 'New Sabor', new_sabor_path %> |
-<%= link_to 'Home', root_path %>
+<%= link_to 'New Sabor', new_sabor_path, class: "btn btn-outline-dark" %> |
+<%= link_to 'Home', root_path, class: "btn btn-outline-dark" %>

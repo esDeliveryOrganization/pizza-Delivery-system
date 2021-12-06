@@ -33,7 +33,7 @@ When('altero o status da pizza para {string}') do |status|
 end
 
 When('clico em editar') do
-    click_link 'Edit'
+    click_link 'Editar'
 end
 
 When('eu clico em atualizar pedido') do

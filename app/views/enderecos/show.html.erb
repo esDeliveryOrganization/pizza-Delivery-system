@@ -1,30 +1,11 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Cep:</strong>
-  <%= @endereco.cep %>
-</p>
-
-<p>
-  <strong>Cidade:</strong>
-  <%= @endereco.cidade %>
-</p>
-
-<p>
-  <strong>Bairro:</strong>
-  <%= @endereco.bairro %>
-</p>
-
-<p>
-  <strong>Logradouro:</strong>
-  <%= @endereco.logradouro %>
-</p>
-
-<p>
-  <strong>Complemento:</strong>
-  <%= @endereco.complemento %>
-</p>
-
-
-<%= link_to 'Edit', edit_endereco_path(@endereco) %> |
-<%= link_to 'Back', enderecos_path %>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 style="color: #fd7e14" class="card-title"><%= @endereco.logradouro %></h5>
+    <h6 style="color: #000000" class="card-subtitle mb-2"><%= @endereco.cep %></h6>
+    <h6 style="color: #000000" class="card-subtitle mb-2"><%= @endereco.cidade %></h6>
+    <h6 style="color: #000000" class="card-subtitle mb-2"><%= @endereco.bairro %></h6>
+    <h6 style="color: #000000" class="card-subtitle mb-2"><%= @endereco.complemento %></h6>
+    <%= link_to 'Editar', edit_endereco_path(@endereco), class:"btn btn-outline-dark" %> 
+    <%= link_to 'Voltar', enderecos_path, class:"btn btn-outline-dark" %>  
+  </div>
+</div>

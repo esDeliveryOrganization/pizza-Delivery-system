@@ -1,7 +1,7 @@
-<h1>Entregadors</h1>
+<h1 class="text-center">Entregadores</h1>
 
-<table>
-  <thead>
+<table class="table bg-dark">
+  <thead class="text-center table-dark">
     <tr>
       <th>Nome</th>
       <th>Telefone</th>
@@ -12,13 +12,13 @@
 
   <tbody>
     <% @entregadors.each do |entregador| %>
-      <tr>
+      <tr class="text-center table-warning"> 
         <td><%= entregador.nome %></td>
         <td><%= entregador.telefone %></td>
         <td><%= entregador.cpf %></td>
-        <td><%= link_to 'Show', entregador %></td>
-        <td><%= link_to 'Edit', edit_entregador_path(entregador), id:"e-#{entregador.cpf}" %></td>
-        <td><%= button_to 'Destroy', entregador, method: :delete, data: { confirm: 'Are you sure?' }, id:"a-#{entregador.cpf}" %></td>
+        <td><%= link_to 'Show', entregador, class: "btn btn-outline-dark" %></td>
+        <td><%= link_to 'Edit', edit_entregador_path(entregador), id:"e-#{entregador.cpf}", class: "btn btn-outline-dark" %></td>
+        <td><%= button_to 'Destroy', entregador, method: :delete, data: { confirm: 'Are you sure?' }, id:"a-#{entregador.cpf}", class: "btn btn-outline-dark" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,5 +26,5 @@
 
 <br>
 
-<%= link_to 'Novo Entregador', new_entregador_path %> |
-<%= link_to 'Home', root_path %>
+<%= link_to 'Novo Entregador', new_entregador_path, class: "btn btn-outline-dark" %> 
+<%= link_to 'Home', root_path, class: "btn btn-outline-dark" %>
