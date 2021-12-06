@@ -31,7 +31,7 @@
     <h6 style="color: #000000" class="card-subtitle mb-2">Observação: <%= @pedido.observacao %></h6>
     <h6 style="color: #000000" class="card-subtitle mb-2"><%= @pedido.status %></h6>
     <%if !current_user.adm && (@pedido.status == "Esperando Visualização" || @pedido.status == "Visto")%>
-      <%= link_to 'Edit', edit_pedido_path(@pedido), class:"btn btn-outline-dark" %> |
+      <%= link_to 'Editar', edit_pedido_path(@pedido), class:"btn btn-outline-dark" %> |
       <%= link_to 'Destroy', @pedido, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-dark" %> | 
     <%end%>
     <%= link_to 'Voltar', pedidos_path, class:"btn btn-outline-dark" %>  

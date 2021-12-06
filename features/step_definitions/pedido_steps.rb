@@ -79,7 +79,7 @@ When('eu clico em visualizar pedido de ID {string}') do |id|
 end
 
 When('eu clico em editar') do
-    click_link 'Edit'
+    click_link 'Editar'
 end
 
 When('altero a pizza para tamanho {string}') do |tamanho|
