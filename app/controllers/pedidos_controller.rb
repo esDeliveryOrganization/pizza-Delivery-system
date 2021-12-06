@@ -63,13 +63,7 @@ class PedidosController < ApplicationController
         @pedido.pizza.preco = Sabor.find_by(id: @pedido.pizza.sabor2_id).preco * @pedido.pizza.tamanho
       end
 
-      if @pedido.pizza.tamanho == 1
-        @pedido.pizza.fatias = 6
-      elsif @pedido.pizza.tamanho == 1.5
-        @pedido.pizza.fatias = 8
-      elsif @pedido.pizza.tamanho == 1.8
-        @pedido.pizza.fatias = 12
-      end
+      definir_quantidade_de_fatias
 
       @pedido.precoTotal = @pedido.quantidadePizzas * @pedido.pizza.preco
 
@@ -90,7 +84,15 @@ class PedidosController < ApplicationController
     end
   end
 
- 
+  def definir_quantidade_de_fatias
+    if @pedido.pizza.tamanho == 1
+      @pedido.pizza.fatias = 6
+    elsif @pedido.pizza.tamanho == 1.5
+      @pedido.pizza.fatias = 8
+    elsif @pedido.pizza.tamanho == 1.8
+      @pedido.pizza.fatias = 12
+    end
+  end
 
   # PATCH/PUT /pedidos/1 or /pedidos/1.json
   def update
@@ -116,13 +118,7 @@ class PedidosController < ApplicationController
         @pedido.pizza.preco = Sabor.find_by(id: @pedido.pizza.sabor2_id).preco * @pedido.pizza.tamanho
       end
 
-      if @pedido.pizza.tamanho == 1
-        @pedido.pizza.fatias = 6
-      elsif @pedido.pizza.tamanho == 1.5
-        @pedido.pizza.fatias = 8
-      elsif @pedido.pizza.tamanho == 1.8
-        @pedido.pizza.fatias = 12
-      end
+      definir_quantidade_de_fatias
 
       precoTotal = @pedido.quantidadePizzas * @pedido.pizza.preco
       @pedido.update(precoTotal: precoTotal)
