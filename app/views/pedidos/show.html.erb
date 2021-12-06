@@ -22,7 +22,7 @@
     <% else %>
       <h5 style="color: #fd7e14" class="card-title"><%= s2.descricao %>
     <%end%>
-    <h6 style="color: #000000" class="card-subtitle mb-2"><%= @pedido.nomeDest %>, <%= @pedido.contato %> </h6>
+    <h6 style="color: #000000" class="card-subtitle mb-2"><%= @pedido.nomeDestinatario %>, <%= @pedido.contato %> </h6>
     <h6 style="color: #000000" class="card-subtitle mb-2"><%= e.logradouro %></h6>
     <%if current_user.adm%>
       <h6 style="color: #000000" class="card-subtitle mb-2"><%= @entregador %></h6>
