@@ -13,7 +13,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <%if current_user.adm %>
-                <li><%= link_to 'Index', pedidos_path, class: "dropdown-item"%></li>
+                <li><%= link_to 'Todos os pedidos', pedidos_path, class: "dropdown-item"%></li>
               <%end%>
               <li><%= link_to 'Fazer um Pedido', new_pedido_path, class: "dropdown-item"%></li>
               <%if !current_user.adm %>
@@ -41,7 +41,7 @@
               Sabores
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><%= link_to 'Index Sabores', sabors_path, class: "dropdown-item"%></li>
+              <li><%= link_to 'Todos os Sabores', sabors_path, class: "dropdown-item"%></li>
               <li><%= link_to 'Cadastrar novo sabor', new_sabor_path, class: "dropdown-item"%></li>
             </ul>
           </li>
@@ -51,7 +51,7 @@
               Clientes
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><%= link_to 'Index Clientes', clientes_path, class: "dropdown-item"%></li>
+              <li><%= link_to 'Todos os Clientes', clientes_path, class: "dropdown-item"%></li>
               <li><%= link_to 'Cadastrar novo cliente', '/signup', class: "dropdown-item"%></li>
             </ul>
           </li>
@@ -61,7 +61,7 @@
               Administradores
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><%= link_to 'Index Administradores', adms_path, class: "dropdown-item"%></li>
+              <li><%= link_to 'Todos os Administradores', adms_path, class: "dropdown-item"%></li>
               <li><%= link_to 'Cadastrar novo administrador', '/signup', class: "dropdown-item"%></li>
             </ul>
           </li>
@@ -71,7 +71,7 @@
               Entregadores
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><%= link_to 'Index Entregadores', entregadors_path, class: "dropdown-item"%></li>
+              <li><%= link_to 'Todos os Entregadores', entregadors_path, class: "dropdown-item"%></li>
               <li><%= link_to 'Cadastrar novo entregador', new_entregador_path, class: "dropdown-item"%></li>
             </ul>
           </li>
@@ -81,7 +81,7 @@
               Loja
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><%= link_to 'Show Loja', loja_path(1), class: "dropdown-item"%></li>
+              <li><%= link_to 'Ver Loja', loja_path(1), class: "dropdown-item"%></li>
               <li><%= link_to 'Editar Abertura/Fechamento', edit_loja_path(1), class: "dropdown-item"%></li>
             </ul>
           </li>
