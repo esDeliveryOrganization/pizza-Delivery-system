@@ -104,7 +104,7 @@ end
 Then('eu vejo o pedido com ID {string} e logradouro {string}') do |id, logradouro|
     texto_esperado = 'ID: ' + id
     expect(page).to have_content(texto_esperado)
-    texto_esperado = 'Endereço: ' + id
+    texto_esperado = 'Endereço: ' + logradouro
     expect(page).to have_content(texto_esperado)
 end
 
