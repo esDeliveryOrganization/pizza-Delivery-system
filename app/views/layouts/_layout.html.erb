@@ -93,16 +93,16 @@
             Minha conta
           </a>
           <% if user_signed_in? %>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><%= link_to 'Editar login', edit_user_registration_path, class: "dropdown-item"%></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><%= link_to 'Sair', destroy_user_session_path, method: :delete, class: "dropdown-item"%></li>
-                    </form>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><%= link_to 'Editar login', edit_user_registration_path, class: "dropdown-item"%></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><%= link_to 'Sair', destroy_user_session_path, method: :delete, class: "dropdown-item"%></li>
+            </form>
           <%else%>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><%= link_to 'Logar', new_user_session_path, class: "dropdown-item"%></li>
-                        <li><%= link_to 'Cadastrar-me', '/signup', class: "dropdown-item"%></li>
-                    </form>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><%= link_to 'Logar', new_user_session_path, class: "dropdown-item"%></li>
+            <li><%= link_to 'Cadastrar-me', '/signup', class: "dropdown-item"%></li>
+            </form>
           <%end%>
       </li>
     </div>
