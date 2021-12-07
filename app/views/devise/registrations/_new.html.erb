@@ -1,29 +1,33 @@
 <h2>Sign up</h2>
-
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <%= render "users/shared/error_messages", resource: resource %>
+  <div class="field form-group">
+    <%= f.text_field :cpf, class: "form-control", placeholder: "CPF" %>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+  <div class="field form-group">
+    <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "Senha (minimo de 6 caracteres)" %>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="field form-group">
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Confirmação de senha " %>
   </div>
-
+  <div class="field form-group">
+    <%= f.text_field :nome, class: "form-control", placeholder: "Nome" %>
+  </div>
+  <div class="field form-group">
+    <%= f.text_field :telefone, class: "form-control", placeholder: "Telefone" %>
+  </div>
+  <div class="field form-group">
+    <%= f.email_field :email, class: "form-control", placeholder: "E-mail" %>
+  </div>
+  <%if current_user != nil && current_user.adm%>
+    <div class="field">
+      <%= f.label :adm %>
+      <%= f.text_field :adm%>
+    </div>
+  <%end%>
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up", class: "btn btn-outline-dark" %>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>
+<%= render "users/shared/links" %>
+<%= link_to "Home", root_path, class: "btn btn-outline-dark"  %>

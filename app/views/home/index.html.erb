@@ -3,6 +3,5 @@
 <% elsif user_signed_in? && current_user.adm? %>
   <%= render 'menu_adm/index' %>
 <% else %>
-  <% link_to "login", new_user_session_path %>
   <%= render  'sabors/sabores'%>
 <% end %>
