@@ -16,14 +16,14 @@
   <h5 style="color: #fd7e14" class="card-title">ID: <%= @pedido.id %></h5>
     <h5 style="color: #fd7e14" class="card-title"><%= @pedido.quantidadePizzas %> X </h5>
     <% if !@pedido.pizza.sabor1_id.nil? && !@pedido.pizza.sabor2_id.nil? %>
-      <h5 style="color: #fd7e14" class="card-title"><%= s1.descricao %> | <h5 style="color: #fd7e14" class="card-title"><%= s2.descricao %> </h5>
+      <h5 style="color: #fd7e14" class="card-title"><%= s1.descricao %></h5> | <h5 style="color: #fd7e14" class="card-title"><%= s2.descricao %> </h5>
     <% elsif !@pedido.pizza.sabor1_id.nil? && @pedido.pizza.sabor2_id.nil? %>
-      <h5 style="color: #fd7e14" class="card-title"><%= s1.descricao %>
+      <h5 style="color: #fd7e14" class="card-title"><%= s1.descricao %> </h5>
     <% else %>
-      <h5 style="color: #fd7e14" class="card-title"><%= s2.descricao %>
+      <h5 style="color: #fd7e14" class="card-title"><%= s2.descricao %> </h5>
     <%end%>
     <h6 style="color: #000000" class="card-subtitle mb-2"><%= @pedido.nomeDestinatario %>, <%= @pedido.contato %> </h6>
-    <h6 style="color: #000000" class="card-subtitle mb-2">Endereço: <%= @pedido.endereco_id%>-<%= e.logradouro %></h6>
+    <h6 style="color: #000000" class="card-subtitle mb-2">Endereço: <%= e.logradouro %></h6>
     <%if current_user.adm%>
       <h6 style="color: #000000" class="card-subtitle mb-2"><%= @entregador %></h6>
     <%end%>
