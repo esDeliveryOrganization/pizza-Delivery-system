@@ -1,7 +1,32 @@
-<h1>Menu</h1>
+<h1>Menu</h1>      
+  <h1>Bem vindo ao Sistema</h1>
   <h2>Bem Vindo Cliente</h2>
   <% link_to 'Enderecos', enderecos_path%>
   <% link_to 'Fazer um pedido', new_pedido_path%>
   <% link_to 'Meus Pedidos', pedidos_path %>
   <% link_to 'Editar login', edit_user_registration_path%>
   <% link_to 'Sair', destroy_user_session_path, method: :delete%>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+          <div class="card-body">
+              <h5 style="color: #fd7e14" class="card-title">Pedidos</h5>
+              <li><%= link_to 'Meus pedidos', pedidos_path, class: "dropdown-item" %></li> 
+              <li><%= link_to 'Fazer um Pedido', new_pedido_path, class: "dropdown-item" %></li>  
+            </div>
+          </div>
+      </div>
+      <div class="col">
+          <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                  <h5 style="color: #fd7e14" class="card-title">Endereços</h5>
+                  <li><%= link_to 'Cadastrar novo endereço', new_endereco_path, class: "dropdown-item" %></li> 
+                  <li><%= link_to 'Index Endereços', enderecos_path, class: "dropdown-item" %></li>  
+              </div>
+          </div>
+        </div>
+      </div>
+
+</div>

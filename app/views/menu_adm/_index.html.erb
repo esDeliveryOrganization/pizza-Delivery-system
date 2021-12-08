@@ -1,4 +1,5 @@
 <h1>Menu</h1>
+<h1>Bem vindo ao Sistema</h1>
 <h2>Bem Vindo Administrador</h2>
 <% link_to "Pedidos", pedidos_path %>
 <% link_to "Sabores", sabors_path %>
@@ -8,3 +9,79 @@
 <% link_to "Loja", @loja %>
 <% link_to 'Editar login', edit_user_registration_path%>
 <% link_to 'Sair', destroy_user_session_path, method: :delete%>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 style="color: #fd7e14" class="card-title">Pedidos</h5>
+                    <li><%= link_to 'Index', pedidos_path, class: "dropdown-item" %></li> 
+                    <li><%= link_to 'Fazer um Pedido', new_pedido_path, class: "dropdown-item" %></li>  
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 style="color: #fd7e14" class="card-title">Endereços</h5>
+                    <li><%= link_to 'Cadastrar novo endereço', new_endereco_path, class: "dropdown-item" %></li> 
+                    <li><%= link_to 'Index Endereços', enderecos_path, class: "dropdown-item" %></li>  
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 style="color: #fd7e14" class="card-title">Entregadores</h5>
+                    <li><%= link_to 'Index Entregadores', entregadors_path, class: "dropdown-item" %></li> 
+                    <li><%= link_to 'Cadastrar novo entregador', new_entregador_path, class: "dropdown-item" %></li>  
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 style="color: #fd7e14" class="card-title">Sabores</h5>
+                    <li><%= link_to 'Index Sabores', sabors_path, class: "dropdown-item" %></li> 
+                    <li><%= link_to 'Cadastrar novo sabor', new_sabor_path, class: "dropdown-item" %></li>  
+                </div>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 style="color: #fd7e14" class="card-title">Clientes</h5>
+                    <li><%= link_to 'Index Clientes', clientes_path, class: "dropdown-item" %></li> 
+                    <li><%= link_to 'Cadastrar novo cliente', '/signup', class: "dropdown-item" %></li>  
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 style="color: #fd7e14" class="card-title">Administradores</h5>
+                    <li><%= link_to 'Index Administradores', adms_path, class: "dropdown-item" %></li> 
+                    <li><%= link_to 'Cadastrar novo administrador', '/signup', class: "dropdown-item" %></li>  
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 style="color: #fd7e14" class="card-title">Loja</h5>
+                    <li><%= link_to 'Show Loja', loja_path(1), class: "dropdown-item" %></li> 
+                    <li><%= link_to 'Editar Abertura/Fechamento', edit_loja_path(1), class: "dropdown-item" %></li>  
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

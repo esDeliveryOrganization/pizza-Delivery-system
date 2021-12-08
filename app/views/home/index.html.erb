@@ -1,3 +1,4 @@
+<h1>Bem vindo ao Sistema</h1>
 <%if user_signed_in? && !current_user.adm?%>
   <%= render 'menu_cliente/index' %>
 <% elsif user_signed_in? && current_user.adm? %>
