@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/azu/travis-badge.svg?branch=master)](https://app.travis-ci.com/github/esDeliveryOrganization/pizza-Delivery-system)
 
 # 🍕 Pizza delivery 🍕
-> Status: **Em desenvolvimento**⚠️<br>
+> Status: **Finalizado**✅<br>
 
 ## Sobre o projeto 📑
 Implementação de um sistema de delivery de uma pizzaria em ruby on rails com foco no servidor para a disciplina de Engenharia de Software ministrada pelo professor [Dr. Rodrigo Andrade](https://github.com/rcaa) na UFAPE, referente ao período de 2020.2 com intuito de avaliação para a 2ª verificação de aprendizagem. O projeto possui um cliente, que está a procura de um sistema que seja possível de maneira prática e rapida, realizar um ou mais pedidos de uma pizzaria. O sistema ajudará os usuários a escolher um ou mais sabores de pizza e seus respectivos tamanhos. Além disso, informá-los preços, taxa de entrega e formas de pagamento.
